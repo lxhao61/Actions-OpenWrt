@@ -21,7 +21,8 @@
 #sed -i 's/^\(.*diy1\)/#&/' feeds.conf.default
 
 # 添加xiaorouji大passwall源
-#sed -i '$a src-git passwall https://github.com/xiaorouji/openwrt-passwall.git' feeds.conf.default
+sed -i '$a src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall.git;packages' feeds.conf.default
+sed -i '$a src-git passwall_luci https://github.com/xiaorouji/openwrt-passwall.git;luci' feeds.conf.default
 
 # 注释掉默认的packages源
 #sed -i 's/^\(.*packages\)/#&/' feeds.conf.default
