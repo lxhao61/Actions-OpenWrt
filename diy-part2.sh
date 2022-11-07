@@ -23,7 +23,7 @@ git clone -b packages https://github.com/xiaorouji/openwrt-passwall.git package/
 #git clone -b packages https://github.com/lxhao61/openwrt-passwall.git package/xiaorouji/packages
 
 # 拉取luci-app-passwall插件
-git clone -b luci https://github.com/xiaorouji/openwrt-passwall.git package/xiaorouji/luci
+git clone -b patch-1 https://github.com/xiaorouji/openwrt-passwall.git package/xiaorouji/luci
 #git clone -b luci https://github.com/lxhao61/openwrt-passwall.git package/xiaorouji/luci
 
 # 拉取ipsec-vpnd LuCI
