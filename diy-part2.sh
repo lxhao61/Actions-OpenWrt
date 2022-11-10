@@ -18,13 +18,15 @@ sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generat
 # 删除lienol大自带xray-core核心
 rm -rf package/feeds/packages/xray-core
 
-# 拉取passwall源码
-#git clone -b packages https://github.com/xiaorouji/openwrt-passwall.git package/xiaorouji/packages
-git clone -b packages https://github.com/lxhao61/openwrt-passwall.git package/xiaorouji/packages
-
-# 拉取luci-app-passwall插件
+# 拉取PassWall源码
+git clone -b packages https://github.com/xiaorouji/openwrt-passwall.git package/xiaorouji/packages
+#git clone -b packages https://github.com/lxhao61/openwrt-passwall.git package/xiaorouji/packages
 git clone -b luci https://github.com/xiaorouji/openwrt-passwall.git package/xiaorouji/luci
 #git clone -b luci https://github.com/lxhao61/openwrt-passwall.git package/xiaorouji/luci
+
+# 拉取ShadowSocksR Plus+源码
+#git clone -b master https://github.com/fw876/helloworld.git package/helloworld
+git clone -b patch-1 https://github.com/lxhao61/helloworld.git package/helloworld
 
 # 拉取ipsec-vpnd LuCI
 #git clone https://github.com/tungnt017/luci-app-ipsec-vpnd package/lean/luci-app-ipsec-vpnd
