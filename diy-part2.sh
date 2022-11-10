@@ -28,6 +28,11 @@ git clone -b luci https://github.com/xiaorouji/openwrt-passwall.git package/xiao
 #git clone -b master https://github.com/fw876/helloworld.git package/helloworld
 git clone -b patch-1 https://github.com/lxhao61/helloworld.git package/helloworld
 
+mkdir -p package/helloworld
+for i in "dns2socks" "microsocks" "ipt2socks" "pdnsd-alt" "redsocks2"; do \
+  svn checkout "https://github.com/immortalwrt/packages/trunk/net/$i" "package/helloworld/$i"; \
+done
+
 # 拉取ipsec-vpnd LuCI
 #git clone https://github.com/tungnt017/luci-app-ipsec-vpnd package/lean/luci-app-ipsec-vpnd
 svn co https://github.com/lxhao61/openwrt-plugin/trunk/package/lean/luci-app-ipsec-vpnd package/lean/luci-app-ipsec-vpnd
