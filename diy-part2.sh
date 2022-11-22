@@ -25,7 +25,7 @@ git clone -b luci https://github.com/xiaorouji/openwrt-passwall.git package/xiao
 #git clone -b luci https://github.com/lxhao61/openwrt-passwall.git package/xiaorouji/luci
 
 # 拉取ShadowSocksR Plus+源码
-git clone -b master https://github.com/fw876/helloworld.git package/helloworld
+#git clone -b master https://github.com/fw876/helloworld.git package/helloworld
 #git clone -b patch-1 https://github.com/lxhao61/helloworld.git package/helloworld
 
 # 拉取ipsec-vpnd LuCI
