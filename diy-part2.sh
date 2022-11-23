@@ -16,10 +16,10 @@ sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generat
 #sed -i 's/192.168.1.1/192.168.6.5/g' package/base-files/files/bin/config_generate
 
 # 删除lienol大自带dnsmasq
-rm -rf package/network/services/dnsmasq
+#rm -rf package/network/services/dnsmasq
 
 # 拉取dnsmasq源码
-svn co https://github.com/lxhao61/immortalwrt/trunk/package/network/services/dnsmasq package/network/services/dnsmasq
+#svn co https://github.com/lxhao61/immortalwrt/trunk/package/network/services/dnsmasq package/network/services/dnsmasq
 
 # 删除lienol大自带xray-core核心
 rm -rf package/feeds/packages/xray-core
