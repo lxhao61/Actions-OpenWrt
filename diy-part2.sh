@@ -27,8 +27,8 @@ rm -rf package/feeds/packages/xray-core
 # 拉取PassWall源码
 git clone -b packages https://github.com/xiaorouji/openwrt-passwall.git package/xiaorouji/packages
 #git clone -b packages https://github.com/lxhao61/openwrt-passwall.git package/xiaorouji/packages
-git clone -b luci https://github.com/xiaorouji/openwrt-passwall.git package/xiaorouji/luci@970f3a590b3b211355e3a10b396815b859d8cfe5
-#git clone -b luci-reality https://github.com/lxhao61/openwrt-passwall.git package/xiaorouji/luci
+#git clone -b luci https://github.com/xiaorouji/openwrt-passwall.git package/xiaorouji/luci
+git clone -b luci https://github.com/lxhao61/openwrt-passwall.git package/xiaorouji/luci
 
 # 拉取ShadowSocksR Plus+源码
 #git clone -b master https://github.com/fw876/helloworld.git package/helloworld
