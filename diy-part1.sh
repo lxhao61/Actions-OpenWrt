@@ -25,7 +25,7 @@
 #sed -i '$a src-git passwall_luci https://github.com/xiaorouji/openwrt-passwall.git;luci' feeds.conf.default
 
 # 注释掉默认的packages源
-sed -i 's/^\(.*packages\)/#&/' feeds.conf.default
+#sed -i 's/^\(.*packages\)/#&/' feeds.conf.default
 
 # 添加修改的packages源
-sed -i '$a src-git packages https://github.com/lxhao61/openwrt-packages.git;22.03' feeds.conf.default
+#sed -i '$a src-git packages https://github.com/lxhao61/openwrt-packages.git;22.03' feeds.conf.default
