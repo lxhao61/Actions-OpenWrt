@@ -15,28 +15,18 @@
 sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generate
 #sed -i 's/192.168.1.1/192.168.6.5/g' package/base-files/files/bin/config_generate
 
-# 删除lienol大自带dnsmasq
-#rm -rf package/network/services/dnsmasq
-
-# 拉取dnsmasq源码
-#svn co https://github.com/lxhao61/immortalwrt/trunk/package/network/services/dnsmasq package/network/services/dnsmasq
-
 # 删除lienol大自带xray-core核心
 rm -rf package/feeds/packages/xray-core
 
 # 拉取PassWall源码
-#git clone -b packages https://github.com/xiaorouji/openwrt-passwall.git package/xiaorouji/packages
-git clone -b packages https://github.com/lxhao61/openwrt-passwall.git package/xiaorouji/packages
-#git clone -b luci https://github.com/xiaorouji/openwrt-passwall.git package/xiaorouji/luci
-git clone -b luci https://github.com/lxhao61/openwrt-passwall.git package/xiaorouji/luci
+git clone -b packages https://github.com/xiaorouji/openwrt-passwall.git package/xiaorouji/packages
+#git clone -b packages https://github.com/lxhao61/openwrt-passwall.git package/xiaorouji/packages
+git clone -b luci https://github.com/xiaorouji/openwrt-passwall.git package/xiaorouji/luci
+#git clone -b luci https://github.com/lxhao61/openwrt-passwall.git package/xiaorouji/luci
 
 # 拉取ShadowSocksR Plus+源码
 #git clone -b master https://github.com/fw876/helloworld.git package/helloworld
 #git clone -b patch-1 https://github.com/lxhao61/helloworld.git package/helloworld
-
-# 拉取ipsec-vpnd LuCI
-#git clone https://github.com/tungnt017/luci-app-ipsec-vpnd package/lean/luci-app-ipsec-vpnd
-svn co https://github.com/lxhao61/openwrt-plugin/trunk/package/lean/luci-app-ipsec-vpnd package/lean/luci-app-ipsec-vpnd
 
 # 删除原版softethervpn插件
 #rm -rf feeds/packages/net/softethervpn
