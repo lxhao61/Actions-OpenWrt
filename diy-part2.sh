@@ -41,7 +41,10 @@ git clone -b luci https://github.com/xiaorouji/openwrt-passwall.git package/xiao
 #svn co https://github.com/lxhao61/openwrt-package/trunk/luci-app-softethervpn feeds/lienol/luci-app-softethervpn
 
 # 拉取phtunnel插件
-#svn co https://github.com/coolsnowwolf/packages/trunk/net/phtunnel package/lean/phtunnel
+svn co https://github.com/coolsnowwolf/packages/trunk/net/phtunnel feeds/packages/net/phtunnel
 
 # 拉取luci-app-phtunnel插件
 #svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-phtunnel package/lean/luci-app-phtunnel
+
+# 拉取tailscale插件
+svn co https://github.com/coolsnowwolf/packages/trunk/net/tailscale feeds/packages/net/tailscale
