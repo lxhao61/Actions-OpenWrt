@@ -47,7 +47,7 @@ git clone -b luci https://github.com/xiaorouji/openwrt-passwall.git package/xiao
 svn co https://github.com/coolsnowwolf/packages/trunk/net/phtunnel package/net/phtunnel
 
 # 拉取luci-app-phtunnel插件
-#svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-phtunnel package/lean/luci-app-phtunnel
+#svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-phtunnel package/net/luci-app-phtunnel
 
 # 拉取tailscale插件
-svn co https://github.com/coolsnowwolf/packages/trunk/net/tailscale package/net/tailscale
+#svn co https://github.com/coolsnowwolf/packages/trunk/net/tailscale package/net/tailscale
