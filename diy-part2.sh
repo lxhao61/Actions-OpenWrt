@@ -49,7 +49,7 @@ git clone https://github.com/OrayOS/OpenOray.git package/OpenOray
 #svn co https://github.com/lxhao61/openwrt-package/trunk/luci-app-softethervpn feeds/lienol/luci-app-softethervpn
 
 # 拉取phtunnel插件
-svn co https://github.com/coolsnowwolf/packages/trunk/net/phtunnel package/net/phtunnel
+#svn co https://github.com/coolsnowwolf/packages/trunk/net/phtunnel package/net/phtunnel
 
 # 拉取luci-app-phtunnel插件
 #svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-phtunnel package/net/luci-app-phtunnel
