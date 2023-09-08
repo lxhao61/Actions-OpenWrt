@@ -17,6 +17,7 @@ sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generat
 
 # 删除lienol大自带xray-core核心
 rm -rf package/feeds/packages/xray-core
+rm -rf feeds/packages/net/xray-core
 
 # 拉取PassWall源码
 git clone -b packages https://github.com/xiaorouji/openwrt-passwall.git package/xiaorouji/packages
