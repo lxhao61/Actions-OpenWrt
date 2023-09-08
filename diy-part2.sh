@@ -49,5 +49,8 @@ svn co https://github.com/coolsnowwolf/packages/trunk/net/phtunnel package/net/p
 # 拉取luci-app-phtunnel插件
 #svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-phtunnel package/net/luci-app-phtunnel
 
+# 拉取phtunnel、pgyvpn插件
+git clone https://github.com/OrayOS/OpenOray.git package/OpenOray
+
 # 拉取tailscale插件
 #svn co https://github.com/coolsnowwolf/packages/trunk/net/tailscale package/net/tailscale
