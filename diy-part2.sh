@@ -20,9 +20,9 @@ rm -rf package/feeds/packages/xray-core
 
 # 拉取PassWall源码
 git clone -b packages https://github.com/xiaorouji/openwrt-passwall.git package/xiaorouji/packages
-cd package/xiaorouji/packages
-git checkout c189a68728d6bb65d9fb4b47fdacea3ba970a624
-cd -
+#cd package/xiaorouji/packages
+#git checkout c189a68728d6bb65d9fb4b47fdacea3ba970a624
+#cd -
 #git clone -b packages https://github.com/lxhao61/openwrt-passwall.git package/xiaorouji/packages
 git clone -b luci https://github.com/xiaorouji/openwrt-passwall.git package/xiaorouji/luci
 #git clone -b luci https://github.com/lxhao61/openwrt-passwall.git package/xiaorouji/luci
