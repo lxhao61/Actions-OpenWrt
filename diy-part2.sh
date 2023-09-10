@@ -57,4 +57,4 @@ git clone https://github.com/OrayOS/OpenOray.git package/OpenOray
 
 # 拉取tailscale插件
 #svn co https://github.com/lxhao61/openwrt-packages/trunk/net/tailscale package/net/tailscale
-svn co https://github.com/immortalwrt/packages/trunk/net/tailscale package/net/tailscale
+svn co https://github.com/lxhao61/packages/trunk/net/tailscale package/net/tailscale
