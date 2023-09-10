@@ -35,7 +35,7 @@ cd -
 #git clone -b master https://github.com/fw876/helloworld.git package/helloworld
 
 # 拉取phtunnel、pgyvpn源码
-git clone https://github.com/OrayOS/OpenOray.git package/OpenOray
+git clone https://github.com/OrayOS/OpenOray.git package/net/OpenOray
 
 # 删除原版softethervpn插件
 #rm -rf feeds/packages/net/softethervpn
@@ -56,4 +56,4 @@ git clone https://github.com/OrayOS/OpenOray.git package/OpenOray
 #svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-phtunnel package/net/luci-app-phtunnel
 
 # 拉取tailscale插件
-#svn co https://github.com/coolsnowwolf/packages/trunk/net/tailscale package/net/tailscale
+svn co https://github.com/coolsnowwolf/packages/trunk/net/tailscale package/net/tailscale
