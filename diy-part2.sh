@@ -35,7 +35,7 @@ cd -
 #git clone -b master https://github.com/fw876/helloworld.git package/helloworld
 
 # 拉取phtunnel、pgyvpn源码
-git clone https://github.com/OrayOS/OpenOray.git package/net/OpenOray
+git clone https://github.com/OrayOS/OpenOray.git package/OpenOray
 
 # 删除原版softethervpn插件
 #rm -rf feeds/packages/net/softethervpn
