@@ -56,4 +56,8 @@ git clone https://github.com/OrayOS/OpenOray.git package/OpenOray
 #svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-phtunnel package/net/luci-app-phtunnel
 
 # 拉取tailscale插件
-svn co https://github.com/lxhao61/openwrt-packages/trunk/net/tailscale package/net/tailscale
+#svn co https://github.com/lxhao61/openwrt-packages/tree/21.02/net/tailscale package/net/tailscale
+#svn co https://github.com/lxhao61/openwrt-packages/trunk/net/tailscale package/net/tailscale
+#svn co https://github.com/Lienol/openwrt-packages/tree/21.02/net/tailscale package/net/tailscale
+svn co https://github.com/Lienol/openwrt-packages/trunk/net/tailscale package/net/tailscale
+#svn co https://github.com/immortalwrt/packages/tree/openwrt-18.06/net/tailscale package/net/tailscale
