@@ -12,8 +12,8 @@
 
 # Modify default IP
 #sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
-#sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generate
-sed -i 's/192.168.1.1/192.168.8.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generate
+#sed -i 's/192.168.1.1/192.168.8.1/g' package/base-files/files/bin/config_generate
 
 # 删除lienol大自带xray-core源码
 rm -rf feeds/packages/net/xray-core
@@ -56,5 +56,5 @@ git clone https://github.com/OrayOS/OpenOray.git package/OpenOray
 #svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-phtunnel package/net/luci-app-phtunnel
 
 # 拉取tailscale插件
-svn co https://github.com/lxhao61/openwrt-packages/trunk/net/tailscale package/net/tailscale
+#svn co https://github.com/lxhao61/openwrt-packages/trunk/net/tailscale package/net/tailscale
 #svn co https://github.com/lxhao61/packages/trunk/net/tailscale package/net/tailscale
