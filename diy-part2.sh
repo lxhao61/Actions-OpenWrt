@@ -31,6 +31,10 @@ git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall/luc
 #git checkout d1e618220a9a0a4b73d536101f452a2f4cf14861
 #cd -
 
+# 拉取msd_lite源码
+git clone https://github.com/ximiTech/msd_lite.git package/msd_lite
+git clone https://github.com/ximiTech/luci-app-msd_lite.git package/luci-app-msd_lite
+
 # 拉取ShadowSocksR Plus+源码
 #git clone -b master https://github.com/fw876/helloworld.git package/helloworld
 
