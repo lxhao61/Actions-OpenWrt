@@ -15,7 +15,7 @@
 sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generate
 #sed -i 's/192.168.1.1/192.168.8.1/g' package/base-files/files/bin/config_generate
 
-# 删除lienol大自带xray-core源码
+# 删除自带xray-core源码
 rm -rf feeds/packages/net/xray-core
 rm -rf package/feeds/packages/xray-core
 
