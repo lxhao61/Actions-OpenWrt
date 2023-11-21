@@ -31,15 +31,18 @@ git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall/luc
 #git checkout d1e618220a9a0a4b73d536101f452a2f4cf14861
 #cd -
 
+# 拉取ShadowSocksR Plus+源码
+#git clone -b master https://github.com/fw876/helloworld.git package/helloworld
+
 # 拉取msd_lite源码
 git clone https://github.com/ximiTech/msd_lite.git package/msd_lite
 git clone https://github.com/ximiTech/luci-app-msd_lite.git package/luci-app-msd_lite
 
-# 拉取ShadowSocksR Plus+源码
-#git clone -b master https://github.com/fw876/helloworld.git package/helloworld
-
 # 拉取phtunnel、pgyvpn源码
 git clone https://github.com/OrayOS/OpenOray.git package/OpenOray
+
+# 拉取phtunnel插件
+#svn co https://github.com/coolsnowwolf/packages/trunk/net/phtunnel package/net/phtunnel
 
 # 删除原版softethervpn插件
 #rm -rf feeds/packages/net/softethervpn
@@ -52,9 +55,6 @@ git clone https://github.com/OrayOS/OpenOray.git package/OpenOray
 
 # 拉取修改后的luci-app-softethervpn插件
 #svn co https://github.com/lxhao61/openwrt-package/trunk/luci-app-softethervpn feeds/lienol/luci-app-softethervpn
-
-# 拉取phtunnel插件
-#svn co https://github.com/coolsnowwolf/packages/trunk/net/phtunnel package/net/phtunnel
 
 # 拉取luci-app-phtunnel插件
 #svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-phtunnel package/net/luci-app-phtunnel
