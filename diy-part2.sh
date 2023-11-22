@@ -41,8 +41,8 @@ git clone https://github.com/ximiTech/luci-app-msd_lite.git package/feeds/luci/l
 #git clone https://github.com/OrayOS/OpenOray.git package/feeds/OpenOray
 
 # 拉取lean大phtunnel源码
-svn co https://github.com/coolsnowwolf/packages/branches/master/net/phtunnel package/feeds/packages/phtunnel
-svn co https://github.com/OrayOS/OpenOray/branches/main/luci-app-phtunnel package/feeds/luci/luci-app-phtunnel
+svn co https://github.com/coolsnowwolf/packages/trunk/net/phtunnel package/feeds/packages/phtunnel
+svn co https://github.com/OrayOS/OpenOray/trunk/luci-app-phtunnel package/feeds/luci/luci-app-phtunnel
 
 # 拉取lean大tailscale源码
-#svn co https://github.com/coolsnowwolf/packages/branches/master/net/tailscale package/feeds/packages/tailscale
+#svn co https://github.com/coolsnowwolf/packages/trunk/net/tailscale package/feeds/packages/tailscale
