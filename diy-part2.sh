@@ -40,7 +40,7 @@ git clone https://github.com/xiaorouji/openwrt-passwall.git package/feeds/luci/l
 #git clone -b master https://github.com/fw876/helloworld.git package/feeds/helloworld
 
 # 拉取 tailscale 源码
-svn co https://github.com/coolsnowwolf/packages/trunk/net/tailscale package/feeds/packages/tailscale
+svn co https://github.com/coolsnowwolf/packages/trunk/net/tailscale feeds/packages/net/tailscale
 
 # 拉取 phtunnel、pgyvpn 源码
 #git clone https://github.com/OrayOS/OpenOray.git package/feeds/OpenOray
