@@ -15,10 +15,10 @@ sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generat
 #sed -i 's/192.168.1.1/192.168.8.1/g' package/base-files/files/bin/config_generate
 
 # 删除自带 golang 源码
-rm -rf feeds/packages/lang/golang
+#rm -rf feeds/packages/lang/golang
 
 # 拉取 golang 源码
-svn co https://github.com/coolsnowwolf/packages/trunk/lang/golang feeds/packages/lang/golang
+#svn co https://github.com/coolsnowwolf/packages/trunk/lang/golang feeds/packages/lang/golang
 
 # 删除自带 xray-core 源码
 rm -rf feeds/packages/net/xray-core
@@ -40,7 +40,7 @@ git clone https://github.com/xiaorouji/openwrt-passwall.git package/feeds/luci/l
 #git clone -b master https://github.com/fw876/helloworld.git package/feeds/helloworld
 
 # 拉取 tailscale 源码
-svn co https://github.com/coolsnowwolf/packages/trunk/net/tailscale feeds/packages/net/tailscale
+#svn co https://github.com/coolsnowwolf/packages/trunk/net/tailscale feeds/packages/net/tailscale
 
 # 拉取 phtunnel、pgyvpn 源码
 #git clone https://github.com/OrayOS/OpenOray.git package/feeds/OpenOray
