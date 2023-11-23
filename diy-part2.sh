@@ -47,6 +47,8 @@ git clone https://github.com/xiaorouji/openwrt-passwall.git package/feeds/luci/l
 
 # 拉取 phtunnel 源码
 svn co https://github.com/coolsnowwolf/packages/trunk/net/phtunnel package/feeds/packages/phtunnel
+
+# 拉取 luci-app-phtunnel 源码
 svn co https://github.com/OrayOS/OpenOray/trunk/luci-app-phtunnel package/feeds/luci/luci-app-phtunnel
 
 # 拉取 msd_lite 源码
