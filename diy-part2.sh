@@ -41,7 +41,3 @@ svn co https://github.com/coolsnowwolf/packages/trunk/net/phtunnel package/feeds
 
 # 提取 luci-app-phtunnel 源码
 svn co https://github.com/OrayOS/OpenOray/trunk/luci-app-phtunnel package/feeds/luci/luci-app-phtunnel
-
-# 拉取 msd_lite 源码
-git clone https://github.com/ximiTech/msd_lite.git package/feeds/packages/msd_lite
-git clone https://github.com/ximiTech/luci-app-msd_lite.git package/feeds/luci/luci-app-msd_lite
