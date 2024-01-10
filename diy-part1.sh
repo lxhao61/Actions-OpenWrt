@@ -18,7 +18,7 @@
 # 选择最新的稳定版本（切换分支）
 git branch -a
 git tag
-git checkout v19.07.9
+git checkout v19.07.10
 
 # Uncomment a feed source
 #sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
