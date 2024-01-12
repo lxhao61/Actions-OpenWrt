@@ -12,7 +12,8 @@
 
 # 回退源码
 #git reset --hard 2db72d69a9eb5971dc4df1402213f5088e425695
-git reset --hard 5242189664191097e284a2f89992a3e675526fa1
+#git reset --hard 5242189664191097e284a2f89992a3e675526fa1
+git reset --hard bf067e00f58a6bf17b4f26a84a55706ea6eecf1f
 #git reset --hard 7c11d3b
 
 # Uncomment a feed source
