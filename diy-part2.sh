@@ -39,3 +39,25 @@ git clone https://github.com/xiaorouji/openwrt-passwall.git package/feeds/luci/l
 # 拉取 msd_lite 源码
 git clone https://github.com/ximiTech/msd_lite.git package/feeds/packages/msd_lite
 git clone https://github.com/ximiTech/luci-app-msd_lite.git package/feeds/luci/luci-app-msd_lite
+
+function merge_package(){
+    # 参数1是分支名,参数2是库地址。所有文件下载到指定路径。
+    # 同一个仓库下载多个文件夹直接在后面跟文件名或路径，空格分开。
+    trap 'rm -rf "$tmpdir"' EXIT
+    branch="$1" curl="$2" target_dir="$3" && shift 3
+    rootdir="$PWD"
+    localdir="$target_dir"
+    [ -d "$localdir" ] || mkdir -p "$localdir"
+    tmpdir="$(mktemp -d)" || exit 1
+    git clone -b "$branch" --depth 1 --filter=blob:none --sparse "$curl" "$tmpdir"
+    cd "$tmpdir"
+    git sparse-checkout init --cone
+    git sparse-checkout set "$@"
+    for folder in "$@"; do
+        mv -f "$folder" "$rootdir/$localdir"
+    done
+    cd "$rootdir"
+}
+
+merge_package master https://github.com/coolsnowwolf/packages package/feeds/packages/phtunnel net/phtunnel
+merge_package main https://github.com/OrayOS/OpenOray package/feeds/luci/luci-app-phtunnel luci-app-phtunnel
