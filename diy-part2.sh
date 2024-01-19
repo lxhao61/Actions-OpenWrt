@@ -18,11 +18,13 @@ sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generat
 rm -rf feeds/packages/net/xray-core
 rm -rf package/feeds/packages/xray-core
 
-# 拉取 PassWall 源码
+# 拉取 passwall-packages 源码
 git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/feeds/packages/passwall
 #cd package/feeds/packages/passwall
 #git checkout c189a68728d6bb65d9fb4b47fdacea3ba970a624
 #cd -
+
+# 拉取 luci-app-passwall 源码
 git clone https://github.com/xiaorouji/openwrt-passwall.git package/feeds/luci/luci-app-passwall
 #cd package/feeds/luci/luci-app-passwall
 #git checkout d1e618220a9a0a4b73d536101f452a2f4cf14861
