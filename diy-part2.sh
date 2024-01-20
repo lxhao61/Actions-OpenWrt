@@ -40,6 +40,7 @@ git clone https://github.com/xiaorouji/openwrt-passwall.git package/feeds/luci/l
 git clone https://github.com/ximiTech/msd_lite.git package/feeds/packages/msd_lite
 git clone https://github.com/ximiTech/luci-app-msd_lite.git package/feeds/luci/luci-app-msd_lite
 
+# 筛选程序
 function merge_package(){
     # 参数1是分支名,参数2是库地址。所有文件下载到指定路径。
     # 同一个仓库下载多个文件夹直接在后面跟文件名或路径，空格分开。
@@ -58,6 +59,6 @@ function merge_package(){
     done
     cd "$rootdir"
 }
-
+# 提取 phtunnel、luci-app-phtunnel 源码
 merge_package master https://github.com/coolsnowwolf/packages package/feeds/packages/phtunnel net/phtunnel
 merge_package main https://github.com/OrayOS/OpenOray package/feeds/luci/luci-app-phtunnel luci-app-phtunnel
