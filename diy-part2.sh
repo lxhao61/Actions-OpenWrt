@@ -14,34 +14,34 @@
 sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generate
 #sed -i 's/192.168.1.1/192.168.8.1/g' package/base-files/files/bin/config_generate
 
-# 删除lienol大自带xray-core源码
+# 删除自带 golang 源码
+rm -rf feeds/packages/lang/golang
+
+# 拉取 golang 源码
+git clone https://github.com/sbwml/packages_lang_golang -b 21.x feeds/packages/lang/golang
+
+# 删除自带 xray-core 源码
 rm -rf feeds/packages/net/xray-core
 rm -rf package/feeds/packages/xray-core
 
-# 拉取PassWall源码
-git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall/packages
-#cd package/passwall/packages
+# 拉取 passwall-packages 源码
+git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/feeds/packages/passwall
+#cd package/feeds/packages/passwall
 #git checkout c189a68728d6bb65d9fb4b47fdacea3ba970a624
 #cd -
-git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall/luci
-#cd package/passwall/luci
+
+# 拉取 luci-app-passwall 源码
+git clone https://github.com/xiaorouji/openwrt-passwall.git package/feeds/luci/luci-app-passwall
+#cd package/feeds/luci/luci-app-passwall
 #git checkout d1e618220a9a0a4b73d536101f452a2f4cf14861
 #cd -
 
 # 拉取ShadowSocksR Plus+源码
 #git clone -b master https://github.com/fw876/helloworld.git package/helloworld
 
+# 拉取 msd_lite 源码
+git clone https://github.com/ximiTech/msd_lite.git package/feeds/packages/msd_lite
+git clone https://github.com/ximiTech/luci-app-msd_lite.git package/feeds/luci/luci-app-msd_lite
+
 # 拉取phtunnel、pgyvpn源码
 git clone https://github.com/OrayOS/OpenOray.git package/OpenOray
-
-# 删除原版softethervpn插件
-#rm -rf feeds/packages/net/softethervpn
-
-# 拉取lienol大softethervpn插件
-#svn co https://github.com/lxhao61/openwrt-packages/trunk/net/softethervpn feeds/packages/net/softethervpn
-
-# 删除原版luci-app-softethervpn插件
-#rm -rf feeds/lienol/luci-app-softethervpn
-
-# 拉取修改后的luci-app-softethervpn插件
-#svn co https://github.com/lxhao61/openwrt-package/trunk/luci-app-softethervpn feeds/lienol/luci-app-softethervpn
