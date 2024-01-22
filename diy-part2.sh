@@ -14,6 +14,12 @@
 sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generate
 #sed -i 's/192.168.1.1/192.168.8.1/g' package/base-files/files/bin/config_generate
 
+# 删除自带 golang 源码
+rm -rf feeds/packages/lang/golang
+
+# 拉取 golang 源码
+git clone https://github.com/sbwml/packages_lang_golang -b 21.x feeds/packages/lang/golang
+
 # 删除自带 xray-core 源码
 rm -rf feeds/packages/net/xray-core
 rm -rf package/feeds/packages/xray-core
@@ -62,3 +68,5 @@ function merge_package(){
 # 提取 phtunnel、luci-app-phtunnel 源码
 merge_package master https://github.com/coolsnowwolf/packages package/feeds/packages/phtunnel net/phtunnel
 merge_package main https://github.com/OrayOS/OpenOray package/feeds/luci/luci-app-phtunnel luci-app-phtunnel
+# 提取 tailscale 源码
+merge_package main https://github.com/kenzok8/small-package feeds/packages/net/tailscale tailscale
