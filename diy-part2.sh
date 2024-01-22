@@ -45,3 +45,29 @@ git clone https://github.com/ximiTech/luci-app-msd_lite.git package/feeds/luci/l
 
 # 拉取phtunnel、pgyvpn源码
 git clone https://github.com/OrayOS/OpenOray.git package/OpenOray
+
+# 删除自带 tailscale 源码
+rm -rf feeds/packages/net/tailscale
+#rm -rf package/feeds/packages/tailscale
+
+# 筛选程序
+function merge_package(){
+    # 参数1是分支名,参数2是库地址。所有文件下载到指定路径。
+    # 同一个仓库下载多个文件夹直接在后面跟文件名或路径，空格分开。
+    trap 'rm -rf "$tmpdir"' EXIT
+    branch="$1" curl="$2" target_dir="$3" && shift 3
+    rootdir="$PWD"
+    localdir="$target_dir"
+    [ -d "$localdir" ] || mkdir -p "$localdir"
+    tmpdir="$(mktemp -d)" || exit 1
+    git clone -b "$branch" --depth 1 --filter=blob:none --sparse "$curl" "$tmpdir"
+    cd "$tmpdir"
+    git sparse-checkout init --cone
+    git sparse-checkout set "$@"
+    for folder in "$@"; do
+        mv -f "$folder" "$rootdir/$localdir"
+    done
+    cd "$rootdir"
+}
+# 提取 tailscale 源码
+merge_package main https://github.com/kenzok8/small-package feeds/packages/net/tailscale tailscale
