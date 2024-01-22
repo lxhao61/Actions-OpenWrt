@@ -69,4 +69,5 @@ function merge_package(){
 merge_package master https://github.com/coolsnowwolf/packages package/feeds/packages/phtunnel net/phtunnel
 merge_package main https://github.com/OrayOS/OpenOray package/feeds/luci/luci-app-phtunnel luci-app-phtunnel
 # 提取 tailscale 源码
-merge_package main https://github.com/kenzok8/small-package feeds/packages/net/tailscale tailscale
+#merge_package main https://github.com/kenzok8/small-package feeds/packages/net/tailscale tailscale
+merge_package main https://github.com/kenzok8/small-package package/feeds/packages/tailscale tailscale
