@@ -44,7 +44,7 @@ git clone https://github.com/ximiTech/msd_lite.git package/feeds/packages/msd_li
 git clone https://github.com/ximiTech/luci-app-msd_lite.git package/feeds/luci/luci-app-msd_lite
 
 # 拉取phtunnel、pgyvpn源码
-git clone https://github.com/OrayOS/OpenOray.git package/OpenOray
+#git clone https://github.com/OrayOS/OpenOray.git package/OpenOray
 
 # 删除自带 tailscale 源码
 rm -rf feeds/packages/net/tailscale
