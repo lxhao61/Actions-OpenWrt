@@ -46,6 +46,9 @@ git clone https://github.com/ximiTech/luci-app-msd_lite.git package/msd_lite/luc
 # 拉取 phtunnel、pgyvpn
 #git clone https://github.com/OrayOS/OpenOray.git package/OpenOray
 
+# 删除 passwall-packages 中 naiveproxy
+rm -rf package/passwall/packages/naiveproxy
+
 # 删除自带 tailscale
 rm -rf feeds/packages/net/tailscale
 
@@ -68,5 +71,7 @@ function merge_package(){
     done
     cd "$rootdir"
 }
-# 提取 tailscale 源码
+# 提取 naiveproxy
+merge_package master https://github.com/immortalwrt/packages.git package/passwall/packages net/naiveproxy
+# 提取 tailscale
 merge_package main https://github.com/kenzok8/small-package feeds/packages/net tailscale
