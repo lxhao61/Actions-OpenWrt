@@ -24,15 +24,15 @@ sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generat
 rm -rf feeds/packages/net/xray-core
 rm -rf package/feeds/packages/xray-core
 
-# 拉取 passwall-packages 源码
-git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/feeds/packages/passwall
-#cd package/feeds/packages/passwall
+# 拉取 passwall-packages
+git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall/packages
+#cd package/passwall/packages
 #git checkout c189a68728d6bb65d9fb4b47fdacea3ba970a624
 #cd -
 
-# 拉取 luci-app-passwall 源码
-git clone https://github.com/xiaorouji/openwrt-passwall.git package/feeds/luci/luci-app-passwall
-#cd package/feeds/luci/luci-app-passwall
+# 拉取 luci-app-passwall
+git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall/luci-app-passwall
+#cd package/passwall/luci-app-passwall
 #git checkout d1e618220a9a0a4b73d536101f452a2f4cf14861
 #cd -
 
@@ -42,6 +42,3 @@ git clone https://github.com/xiaorouji/openwrt-passwall.git package/feeds/luci/l
 # 拉取 msd_lite 源码
 git clone https://github.com/ximiTech/msd_lite.git package/feeds/packages/msd_lite
 git clone https://github.com/ximiTech/luci-app-msd_lite.git package/feeds/luci/luci-app-msd_lite
-
-# 拉取phtunnel、pgyvpn源码
-#git clone https://github.com/OrayOS/OpenOray.git package/OpenOray
