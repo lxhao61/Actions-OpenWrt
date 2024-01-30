@@ -31,15 +31,15 @@ git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/pas
 #cd -
 
 # 拉取 luci-app-passwall
-git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall/luci-app-passwall
-#cd package/passwall/luci-app-passwall
+git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall/luci
+#cd package/passwall/luci
 #git checkout d1e618220a9a0a4b73d536101f452a2f4cf14861
 #cd -
 
 # 拉取 ShadowSocksR Plus+
 #git clone -b master https://github.com/fw876/helloworld.git package/feeds/helloworld
 
-# 拉取 msd_lite
+# 拉取 msd_lite、luci-app-msd_lite
 git clone https://github.com/ximiTech/msd_lite.git package/msd_lite/msd_lite
 git clone https://github.com/ximiTech/luci-app-msd_lite.git package/msd_lite/luci-app-msd_lite
 
@@ -47,7 +47,7 @@ git clone https://github.com/ximiTech/luci-app-msd_lite.git package/msd_lite/luc
 #git clone https://github.com/OrayOS/OpenOray.git package/feeds/OpenOray
 
 # 删除 passwall-packages 中 naiveproxy
-rm -rf package/passwall/packages/naiveproxy
+#rm -rf package/passwall/packages/naiveproxy
 
 # 筛选程序
 function merge_package(){
@@ -69,9 +69,10 @@ function merge_package(){
     cd "$rootdir"
 }
 # 提取 naiveproxy
-merge_package master https://github.com/immortalwrt/packages.git package/passwall/packages net/naiveproxy
+#merge_package master https://github.com/immortalwrt/packages.git package/passwall/packages net/naiveproxy
 # 提取 phtunnel、luci-app-phtunnel
 merge_package master https://github.com/coolsnowwolf/packages.git package/phtunnel net/phtunnel
 merge_package main https://github.com/OrayOS/OpenOray.git package/phtunnel luci-app-phtunnel
 # 提取 tailscale
-merge_package main https://github.com/kenzok8/small-package package/feeds/packages tailscale
+#merge_package main https://github.com/kenzok8/small-package.git feeds/packages/net tailscale
+merge_package master https://github.com/openwrt/packages.git feeds/packages/net net/tailscale
