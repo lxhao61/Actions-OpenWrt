@@ -51,10 +51,10 @@ rm -rf package/feeds/lienol/luci-app-socat
 # 拉取 luci-app-socat
 git clone https://github.com/chenmozhijin/luci-app-socat.git package/socat
 
-# 删除 passwall-packages 中 naiveproxy
-#rm -rf package/passwall/packages/naiveproxy
 # 删除自带 ddns-scripts
 rm -rf feeds/packages/net/ddns-scripts
+# 删除 passwall-packages 中 naiveproxy
+#rm -rf package/passwall/packages/naiveproxy
 # 删除自带 socat
 rm -rf feeds/packages/net/socat
 # 删除自带 tailscale
