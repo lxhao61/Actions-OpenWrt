@@ -49,8 +49,7 @@ git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 rm -rf feeds/lienol/luci-app-socat
 rm -rf package/feeds/lienol/luci-app-socat
 # 拉取 luci-app-socat
-git clone https://github.com/4IceG/luci-app-socat.git package/socat
-#git clone https://github.com/chenmozhijin/luci-app-socat.git package/socat
+git clone https://github.com/chenmozhijin/luci-app-socat.git package/socat
 
 # 删除 passwall-packages 中 naiveproxy
 #rm -rf package/passwall/packages/naiveproxy
