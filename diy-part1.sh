@@ -26,4 +26,4 @@
 # 注释默认 luci
 sed -i 's/^\(.*luci\)/#&/' feeds.conf.default
 # 添加 luci
-sed -i '$a src-git luci https://github.com/Lienol/openwrt-luci.git^30d4078' feeds.conf.default
+sed -i '$a src-git luci https://github.com/Lienol/openwrt-luci.git^db0ddd1' feeds.conf.default
