@@ -19,9 +19,9 @@
 #echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
 
 # 注释默认 packages
-#sed -i 's/^\(.*packages\)/#&/' feeds.conf.default
+sed -i 's/^\(.*packages\)/#&/' feeds.conf.default
 # 添加 packages
-#sed -i '$a src-git packages https://github.com/lxhao61/openwrt-packages.git;22.03' feeds.conf.default
+sed -i '$a src-git packages https://github.com/Lienol/openwrt-packages.git^fb21629' feeds.conf.default
 
 # 注释默认 luci
 sed -i 's/^\(.*luci\)/#&/' feeds.conf.default
