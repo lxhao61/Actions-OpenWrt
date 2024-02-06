@@ -37,7 +37,7 @@ sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generat
 #cd -
 
 # 拉取 ShadowSocksR Plus+
-#git clone -b master https://github.com/fw876/helloworld.git package/helloworld
+#git clone https://github.com/fw876/helloworld.git -b master package/helloworld
 
 # 拉取 msd_lite
 #git clone https://github.com/ximiTech/msd_lite.git package/feeds/packages/msd_lite
