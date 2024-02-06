@@ -133,6 +133,7 @@ libpjsua2 - 2.13.1-1
 libpthread - 1.2.4-4
 libreadline8 - 8.2-1
 librt - 1.2.4-4
+libsodium - 1.0.18-2022-02-27-2e9b4c47-3
 libsqlite3-0 - 3410200-1
 libstdcpp6 - 12.3.0-4
 libubox20230523 - 2023-05-23-75a3b870-1
@@ -156,7 +157,7 @@ luci-app-msd_lite - git-24.035.23785-3419efd
 luci-app-opkg - git-24.035.23785-3419efd
 luci-app-passwall - 4.73-3
 luci-app-socat - git-24.035.23785-3419efd
-luci-app-softethervpn - 20220102
+luci-app-softethervpn - git-24.035.23785-3419efd
 luci-app-upnp - git-24.035.23785-3419efd
 luci-app-vlmcsd - 1.0
 luci-app-wol - git-24.035.23785-3419efd
@@ -216,8 +217,10 @@ rpcd-mod-luci - 20230123-1
 rpcd-mod-rrdns - 20170710
 rpcd-mod-ucode - 2023-07-01-c07ab2f9-1
 socat - 1.7.4.4-1
-softethervpn-base - 4.38-9760-2
-softethervpn-server - 4.38-9760-2
+softethervpn5-bridge - 5.02.5180-3
+softethervpn5-client - 5.02.5180-3
+softethervpn5-libs - 5.02.5180-3
+softethervpn5-server - 5.02.5180-3
 tcping - 0.3-2
 terminfo - 6.4-2
 tuic-client - 1.0.0-1
