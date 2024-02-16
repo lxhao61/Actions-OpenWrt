@@ -12,12 +12,10 @@
 
 # Uncomment a feed source
 #sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
-
 # Add a feed source
 #echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
 
 # 注释默认 packages
 #sed -i 's/^\(.*packages\)/#&/' feeds.conf.default
-
 # 添加 packages
 #sed -i '$a src-git packages https://github.com/lxhao61/openwrt-packages.git;19.07' feeds.conf.default
