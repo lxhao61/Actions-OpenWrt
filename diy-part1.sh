@@ -20,10 +20,10 @@
 
 # 注释默认 packages
 #sed -i 's/^\(.*packages\)/#&/' feeds.conf.default
-# 添加 packages
+# 添加回退 packages
 sed -i '$a src-git packages https://github.com/Lienol/openwrt-packages.git^fb21629' feeds.conf.default
 
 # 注释默认 luci
 sed -i 's/^\(.*luci\)/#&/' feeds.conf.default
-# 添加 luci
+# 添加回退 luci
 sed -i '$a src-git luci https://github.com/Lienol/openwrt-luci.git^db0ddd1' feeds.conf.default
