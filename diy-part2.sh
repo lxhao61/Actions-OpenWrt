@@ -16,7 +16,6 @@ sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generat
 
 # 删除自带 golang
 rm -rf feeds/packages/lang/golang
-
 # 拉取 golang
 git clone https://github.com/sbwml/packages_lang_golang -b 21.x feeds/packages/lang/golang
 
@@ -26,9 +25,9 @@ rm -rf package/feeds/packages/xray-core
 
 # 拉取 passwall-packages
 git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall/packages
-#cd package/passwall/packages
-#git checkout c189a68728d6bb65d9fb4b47fdacea3ba970a624
-#cd -
+cd package/passwall/packages
+git checkout fed70a5113b60c96d9c8182e40770f37c83d67ba
+cd -
 
 # 拉取 luci-app-passwall
 git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall/luci
@@ -74,5 +73,4 @@ function merge_package(){
 merge_package master https://github.com/coolsnowwolf/packages.git package/phtunnel net/phtunnel
 merge_package main https://github.com/OrayOS/OpenOray.git package/phtunnel luci-app-phtunnel
 # 提取 tailscale
-#merge_package main https://github.com/kenzok8/small-package.git feeds/packages/net tailscale
 merge_package master https://github.com/openwrt/packages.git feeds/packages/net net/tailscale
