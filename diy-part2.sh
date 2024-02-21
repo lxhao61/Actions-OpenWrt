@@ -55,12 +55,12 @@ rm -rf feeds/packages/net/ddns-scripts
 rm -rf package/passwall/packages/gn
 # 删除 passwall-packages 中 naiveproxy
 rm -rf package/passwall/packages/naiveproxy
+# 删除自带 tailscale
+rm -rf feeds/packages/net/tailscale
 # 删除自带 socat
 rm -rf feeds/packages/net/socat
 # 删除自带 luci-app-socat
 rm -rf feeds/lienol/luci-app-socat
-# 删除自带 tailscale
-rm -rf feeds/packages/net/tailscale
 
 # 筛选程序
 function merge_package(){
@@ -87,9 +87,9 @@ merge_package openwrt-23.05 https://github.com/immortalwrt/packages.git feeds/pa
 merge_package openwrt-23.05 https://github.com/immortalwrt/packages.git package/passwall/packages devel/gn
 # 提取 naiveproxy
 merge_package openwrt-23.05 https://github.com/immortalwrt/packages.git package/passwall/packages net/naiveproxy
+# 提取 tailscale
+merge_package openwrt-23.05 https://github.com/immortalwrt/packages.git feeds/packages/net net/tailscale
 # 提取 socat
 merge_package openwrt-23.05 https://github.com/immortalwrt/packages.git feeds/packages/net net/socat
 # 提取 luci-app-socat
 merge_package main https://github.com/chenmozhijin/luci-app-socat.git feeds/lienol luci-app-socat
-# 提取 tailscale
-merge_package openwrt-23.05 https://github.com/immortalwrt/packages.git feeds/packages/net net/tailscale
