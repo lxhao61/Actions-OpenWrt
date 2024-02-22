@@ -49,6 +49,9 @@ git clone https://github.com/ximiTech/luci-app-msd_lite.git package/msd_lite/luc
 # 拉取 OpenAppFilter、luci-app-oaf
 git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 
+# 拉取 phtunnel、pgyvpn 及 luci
+#git clone https://github.com/OrayOS/OpenOray.git package/OpenOray
+
 # 删除自带 ddns-scripts
 rm -rf feeds/packages/net/ddns-scripts
 # 删除 passwall-packages 中 gn
