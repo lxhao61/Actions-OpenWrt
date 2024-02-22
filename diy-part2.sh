@@ -82,7 +82,9 @@ merge_package openwrt-23.05 https://github.com/immortalwrt/packages.git package/
 # 提取 naiveproxy
 merge_package openwrt-23.05 https://github.com/immortalwrt/packages.git package/passwall/packages net/naiveproxy
 # 提取 tailscale
-merge_package openwrt-23.05 https://github.com/immortalwrt/packages.git package/feeds/packages net/tailscale
+merge_package main https://github.com/kenzok8/small-package.git package/feeds/packages tailscale
+#merge_package openwrt-23.05 https://github.com/immortalwrt/packages.git package/feeds/packages net/tailscale
+#merge_package master https://github.com/openwrt/packages.git package/feeds/packages net/tailscale
 # 提取 socat
 merge_package openwrt-23.05 https://github.com/immortalwrt/packages.git feeds/packages/net net/socat
 # 提取 luci-app-socat
