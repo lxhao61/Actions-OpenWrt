@@ -46,8 +46,11 @@ git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall/luc
 git clone https://github.com/ximiTech/msd_lite.git package/msd_lite/msd_lite
 git clone https://github.com/ximiTech/luci-app-msd_lite.git package/msd_lite/luci-app-msd_lite
 
-# 拉取 phtunnel、pgyvpn
-#git clone https://github.com/OrayOS/OpenOray.git package/feeds/OpenOray
+# 拉取 OpenAppFilter、luci-app-oaf
+git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
+
+# 拉取 phtunnel、pgyvpn 及 luci
+#git clone https://github.com/OrayOS/OpenOray.git package/OpenOray
 
 # 删除 passwall-packages 中 gn
 rm -rf package/passwall/packages/gn
