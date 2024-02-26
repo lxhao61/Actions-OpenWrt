@@ -17,7 +17,7 @@ sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generat
 # 删除自带 golang
 rm -rf feeds/packages/lang/golang
 # 拉取 golang
-git clone https://github.com/sbwml/packages_lang_golang -b 21.x feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang.git -b 22.x feeds/packages/lang/golang
 
 # 删除自带 v2ray-geodata
 #rm -rf feeds/packages/net/v2ray-geodata
