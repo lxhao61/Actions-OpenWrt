@@ -11,7 +11,7 @@
 #
 
 # 回退源码
-git reset --hard 59fd8f0
+#git reset --hard 59fd8f0
 
 # Uncomment a feed source
 #sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
@@ -19,9 +19,9 @@ git reset --hard 59fd8f0
 #echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
 
 # 注释默认 packages
-sed -i 's/^\(.*packages\)/#&/' feeds.conf.default
+#sed -i 's/^\(.*packages\)/#&/' feeds.conf.default
 # 添加回退 packages
-sed -i '$a src-git packages https://github.com/Lienol/openwrt-packages.git^99c85b7' feeds.conf.default
+#sed -i '$a src-git packages https://github.com/Lienol/openwrt-packages.git^99c85b7' feeds.conf.default
 
 # 注释默认 luci
 #sed -i 's/^\(.*luci\)/#&/' feeds.conf.default
