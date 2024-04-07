@@ -55,9 +55,9 @@ git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 # 删除自带 ddns-scripts
 rm -rf feeds/packages/net/ddns-scripts
 # 删除 passwall-packages 中 gn
-rm -rf package/passwall/packages/gn
+#rm -rf package/passwall/packages/gn
 # 删除 passwall-packages 中 naiveproxy
-#rm -rf package/passwall/packages/naiveproxy
+rm -rf package/passwall/packages/naiveproxy
 # 删除自带 tailscale
 rm -rf feeds/packages/net/tailscale
 # 删除自带 socat
@@ -87,9 +87,10 @@ function merge_package(){
 # 提取 ddns-scripts
 merge_package openwrt-23.05 https://github.com/immortalwrt/packages.git feeds/packages/net net/ddns-scripts
 # 提取 gn
-merge_package openwrt-23.05 https://github.com/immortalwrt/packages.git package/passwall/packages devel/gn
+#merge_package openwrt-23.05 https://github.com/immortalwrt/packages.git package/passwall/packages devel/gn
 # 提取 naiveproxy
 #merge_package master https://github.com/immortalwrt/packages.git package/passwall/packages net/naiveproxy
+merge_package v5 https://github.com/sbwml/openwrt_helloworld.git package/passwall/packages naiveproxyoxy
 # 提取 tailscale
 merge_package openwrt-23.05 https://github.com/immortalwrt/packages.git feeds/packages/net net/tailscale
 # 提取 socat
