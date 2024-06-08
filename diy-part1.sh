@@ -11,8 +11,6 @@
 #
 
 # 回退源码
-#git reset --hard 5242189
-#git reset --hard bf067e0
 #git reset --hard 7c11d3b
 
 # Uncomment a feed source
