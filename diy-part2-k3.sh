@@ -11,14 +11,14 @@
 #
 
 # 修改默认 IP
-#sed -i 's/192.168.1.1/192.168.5.5/g' package/base-files/files/bin/config_generate
-sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.5.1/g' package/base-files/files/bin/config_generate
+#sed -i 's/192.168.1.1/192.168.8.1/g' package/base-files/files/bin/config_generate
 
 # 修改默认主题
-#sed -i 's/luci-theme-bootstrap/luci-theme-material/g' feeds/luci/collections/luci-light/Makefile
+#sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci-light/Makefile
 
 # 修改主机名
-sed -i "s/hostname='.*'/hostname='D2'/g" package/base-files/files/bin/config_generate
+sed -i "s/hostname='.*'/hostname='K3'/g" package/base-files/files/bin/config_generate
 
 # 修改默认时区
 sed -i "s/timezone='.*'/timezone='CST-8'/g" package/base-files/files/bin/config_generate
@@ -67,15 +67,15 @@ git clone https://github.com/gtolog/openwrt-msd_lite.git package/msd_lite
 # 拉取 OpenAppFilter、luci-app-oaf
 git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 
-# 删除自带的 ddns-scripts
+# 删除自带 ddns-scripts
 rm -rf feeds/packages/net/ddns-scripts
-# 删除自带的 luci-app-socat
+# 删除自带 luci-app-socat
 #rm -rf feeds/lienol1/luci-app-socat
-# 删除 passwall-packages 中的 hysteria
+# 删除 passwall-packages 中 hysteria
 #rm -rf package/passwall-packages/hysteria
-# 删除 passwall-packages 中的 naiveproxy
+# 删除 passwall-packages 中 naiveproxy
 #rm -rf package/passwall-packages/naiveproxy
-# 删除 passwall-packages 中的 dns2socks
+# 删除 passwall-packages 中 dns2socks
 #rm -rf package/passwall-packages/dns2socks
 # 删除自带的 tailscale
 rm -rf feeds/packages/net/tailscale
@@ -114,3 +114,9 @@ merge_package openwrt-24.10 https://github.com/immortalwrt/packages.git feeds/pa
 #merge_package master https://github.com/immortalwrt/packages.git package/passwall-packages net/dns2socks
 # 提取 pdnsd-alt、upx、tailscale、luci-app-tailscale
 merge_package main https://github.com/kenzok8/small-package.git package/small-package pdnsd-alt upx tailscale luci-app-tailscale
+# 提取 luci-theme-argon
+merge_package openwrt-24.10 https://github.com/sbwml/luci-theme-argon.git package/luci luci-theme-argon
+# 提取 brcmfmac-firmware-4366c0-pcie-k3
+merge_package openwrt-24.10 https://github.com/immortalwrt/immortalwrt.git package/k3buding package/firmware/brcmfmac4366c0-firmware-k3
+# 提取 phicomm-k3screenctrl
+merge_package openwrt-24.10 https://github.com/immortalwrt/packages.git package/k3buding utils/phicomm-k3screenctrl
