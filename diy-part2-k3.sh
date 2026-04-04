@@ -10,6 +10,10 @@
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
 
+# 删除添加的第三方源配置
+sed -i '/lienol1/d' feeds.conf.default
+sed -i '/lienol2/d' feeds.conf.default
+
 # 修改默认 IP
 sed -i 's/192.168.1.1/192.168.5.1/g' package/base-files/files/bin/config_generate
 #sed -i 's/192.168.1.1/192.168.8.1/g' package/base-files/files/bin/config_generate
@@ -22,14 +26,11 @@ sed -i "s/hostname='.*'/hostname='K3'/g" package/base-files/files/bin/config_gen
 
 # 修改默认时区
 sed -i "s/timezone='.*'/timezone='CST-8'/g" package/base-files/files/bin/config_generate
-sed -i "/.*timezone='CST-8'.*/i\ set system.@system[-1].zonename='Asia/Shanghai'" package/base-files/files/bin/config_generate
+sed -i "/.*timezone='CST-8'.*/a\ set system.@system[-1].zonename='Asia/Shanghai'" package/base-files/files/bin/config_generate
 
 # 开启 WiFi
 sed -i 's/disabled=.*/disabled=0/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 #sed -i 's/ssid=.*/ssid=OpenWrt/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
-
-# 修复 exim 依赖
-sed -i 's/+USE_GLIBC:libcrypt-compat //' feeds/packages/mail/exim/Makefile
 
 # 删除自带的 golang
 rm -rf feeds/packages/lang/golang
@@ -40,8 +41,8 @@ git clone https://github.com/sbwml/packages_lang_golang.git -b 26.x feeds/packag
 rm -rf feeds/packages/net/{xray-core,v2ray-geodata,sing-box,chinadns-ng,dns2socks,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocks-rust,shadowsocksr-libev,simple-obfs,tcping,trojan-plus,tuic-client,v2ray-plugin,xray-plugin,geoview,shadow-tls}
 rm -rf package/feeds/packages/{xray-core,v2ray-geodata,sing-box,chinadns-ng,dns2socks,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocks-rust,shadowsocksr-libev,simple-obfs,tcping,trojan-plus,tuic-client,v2ray-plugin,xray-plugin,geoview,shadow-tls}
 # 拉取新的 passwall-packages
-git clone https://github.com/Openwrt-Passwall/openwrt-passwall-packages.git package/passwall-packages
-#cd package/passwall-packages
+git clone https://github.com/Openwrt-Passwall/openwrt-passwall-packages.git package/chajian/passwall-packages
+#cd package/chajian/passwall-packages
 #git checkout bc40fceb0488dfb5a4adb711cc1830a8021ee555
 #cd -
 
@@ -49,39 +50,52 @@ git clone https://github.com/Openwrt-Passwall/openwrt-passwall-packages.git pack
 rm -rf feeds/luci/applications/luci-app-passwall
 rm -rf package/feeds/luci/luci-app-passwall
 # 拉取新的 passwall-luci
-git clone https://github.com/Openwrt-Passwall/openwrt-passwall.git package/passwall-luci
-#cd package/passwall-luci
+git clone https://github.com/Openwrt-Passwall/openwrt-passwall.git package/chajian/passwall-luci
+#cd package/chajian/passwall-luci
 #git checkout ebd3355bdf2fcaa9e0c43ec0704a8d9d8cf9f658
 #cd -
 
 # 拉取 easytier、luci-app-easytier
-git clone https://github.com/EasyTier/luci-app-easytier.git package/easytier
+git clone https://github.com/EasyTier/luci-app-easytier.git package/chajian/easytier
+
+# 删除自带的 k3screenctrl
+rm -rf feeds/lienol2/lean/k3screenctrl
+rm -rf package/feeds/lienol2/k3screenctrl
+# 拉取 k3screenctrl、luci-app-k3screenctrl
+git clone https://github.com/yangxu52/k3screenctrl_build.git package/chajian/k3buding/k3screenctrl
+git clone https://github.com/yangxu52/luci-app-k3screenctrl.git package/chajian/k3buding/luci-app-k3screenctrl
 
 # 拉取锐捷认证
-git clone https://github.com/sbwml/luci-app-mentohust.git package/mentohust
+git clone https://github.com/sbwml/luci-app-mentohust.git package/chajian/mentohust
 
 # 拉取 msd_lite、luci-app-msd_lite
-git clone https://github.com/gtolog/openwrt-msd_lite.git package/msd_lite
-#git clone https://github.com/gw826943555/openwrt_msd_lite.git package/msd_lite
+git clone https://github.com/gtolog/openwrt-msd_lite.git package/chajian/msd_lite
 
 # 拉取 OpenAppFilter、luci-app-oaf
-git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
+git clone https://github.com/destan19/OpenAppFilter.git package/chajian/OpenAppFilter
 
-# 删除自带 ddns-scripts
+## 删除自带的 luci-app-socat
+rm -rf feeds/lienol1/luci-app-socat
+rm -rf package/feeds/lienol1/luci-app-socat
+# 拉取 luci-app-socat
+git clone https://github.com/chenmozhijin/luci-app-socat.git package/chajian/socat
+
+# 替换 tailscale 的默认启动脚本和配置
+sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
+# 拉取 luci-app-tailscale
+git clone https://github.com/asvow/luci-app-tailscale.git package/chajian/tailscale/luci-app-tailscale
+
+# 拉取 luci-app-temp-status
+git clone https://github.com/Palatis/luci-app-temp-status.git package/chajian/status/luci-app-temp-status
+
+# 筛选提取应用
+## 删除自带的 ddns-scripts
 rm -rf feeds/packages/net/ddns-scripts
-# 删除自带 luci-app-socat
-#rm -rf feeds/lienol1/luci-app-socat
-# 删除 passwall-packages 中 hysteria
-#rm -rf package/passwall-packages/hysteria
-# 删除 passwall-packages 中 naiveproxy
-#rm -rf package/passwall-packages/naiveproxy
-# 删除 passwall-packages 中 dns2socks
-#rm -rf package/passwall-packages/dns2socks
-# 删除自带的 tailscale
-rm -rf feeds/packages/net/tailscale
-rm -rf package/feeds/packages/tailscale
-
-# 筛选程序
+## 删除自带的 luci-base
+rm -rf feeds/luci/modules/luci-base
+## 删除自带的 luci-app-firewall
+rm -rf feeds/luci/applications/luci-app-firewall
+## 筛选程序
 function merge_package(){
     # 参数1是分支名,参数2是库地址。所有文件下载到指定路径。
     # 同一个仓库下载多个文件夹直接在后面跟文件名或路径，空格分开。
@@ -100,23 +114,17 @@ function merge_package(){
     done
     cd "$rootdir"
 }
-# 提取 ddns-scripts
+## 提取 brcmfmac-firmware-4366c0-pcie-k3
+merge_package openwrt-24.10 https://github.com/immortalwrt/immortalwrt.git package/chajian/k3buding package/firmware/brcmfmac4366c0-firmware-k3
+## 提取 ddns-scripts
 merge_package openwrt-24.10 https://github.com/immortalwrt/packages.git feeds/packages/net net/ddns-scripts
-# 提取 luci-app-socat
-#merge_package main https://github.com/chenmozhijin/luci-app-socat.git feeds/lienol1 luci-app-socat
-# 提取 hysteria
-#merge_package v5 https://github.com/sbwml/openwrt_helloworld.git package/passwall-packages hysteria
-# 提取 naiveproxy
-#merge_package v5 https://github.com/sbwml/openwrt_helloworld.git package/passwall-packages naiveproxy
-#merge_package master https://github.com/kenzok8/small.git package/passwall-packages naiveproxy
-#merge_package master https://github.com/immortalwrt/packages.git package/passwall-packages net/naiveproxy
-# 提取 dns2socks
-#merge_package master https://github.com/immortalwrt/packages.git package/passwall-packages net/dns2socks
-# 提取 pdnsd-alt、upx、tailscale、luci-app-tailscale
-merge_package main https://github.com/kenzok8/small-package.git package/small-package pdnsd-alt upx tailscale luci-app-tailscale
-# 提取 luci-theme-argon
-merge_package openwrt-24.10 https://github.com/sbwml/luci-theme-argon.git package/luci luci-theme-argon
-# 提取 brcmfmac-firmware-4366c0-pcie-k3
-merge_package openwrt-24.10 https://github.com/immortalwrt/immortalwrt.git package/k3buding package/firmware/brcmfmac4366c0-firmware-k3
-# 提取 phicomm-k3screenctrl
-merge_package openwrt-24.10 https://github.com/immortalwrt/packages.git package/k3buding utils/phicomm-k3screenctrl
+## 提取 fullconenat-nft
+merge_package openwrt-24.10 https://github.com/immortalwrt/immortalwrt.git package/network/utils package/network/utils/fullconenat-nft
+## 提取 pdnsd-alt、upx
+merge_package main https://github.com/kenzok8/jell.git package/chajian/kenzok8-package pdnsd-alt upx
+## 提取 luci-base
+merge_package openwrt-24.10 https://github.com/immortalwrt/luci.git feeds/luci/modules modules/luci-base
+## 提取 luci-app-firewall
+merge_package openwrt-24.10 https://github.com/immortalwrt/luci.git feeds/luci/applications applications/luci-app-firewall
+## 提取 luci-theme-argon
+merge_package openwrt-24.10 https://github.com/sbwml/luci-theme-argon.git package/chajian/argon luci-theme-argon

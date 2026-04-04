@@ -12,8 +12,8 @@
 
 # 查看所有标签
 #git tag
-# 切换到标签 v24.10.5
-git checkout v24.10.5
+# 切换到标签 v24.10.6
+git checkout v24.10.6
 
 # 全部改为稳定的 github 源
 sed -i 's|https://git.openwrt.org/feed/packages.git|https://github.com/openwrt/packages.git|g' feeds.conf.default
