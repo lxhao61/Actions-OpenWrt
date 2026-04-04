@@ -12,14 +12,14 @@
 
 # 查看所有标签
 #git tag
-# 切换到标签 v24.10.5
-git checkout v24.10.5
+# 切换到标签 v24.10.6
+git checkout v24.10.6
 
 # 改为 ImmortalWrt 的 packages
-sed -i 's|^src-git packages https://git.openwrt.org/feed/packages.*|src-git packages https://github.com/immortalwrt/packages.git^ebe2df90aaf60bdae46799fbd85d523b1de36c3a|' feeds.conf.default
+sed -i 's|^src-git packages https://git.openwrt.org/feed/packages.*|src-git packages https://github.com/immortalwrt/packages.git;openwrt-24.10|' feeds.conf.default
 
 # 改为 ImmortalWrt 的 luci
-sed -i 's|^src-git luci https://git.openwrt.org/project/luci.*|src-git luci https://github.com/immortalwrt/luci.git^3dc9a84b4c451c8ad0d6e0b1a565b1b1405c522e|' feeds.conf.default
+sed -i 's|^src-git luci https://git.openwrt.org/project/luci.*|src-git luci https://github.com/immortalwrt/luci.git;openwrt-24.10|' feeds.conf.default
 
 # 其余改为稳定的 github 源
 sed -i 's|https://git.openwrt.org/feed/routing.git|https://github.com/openwrt/routing.git|g' feeds.conf.default
