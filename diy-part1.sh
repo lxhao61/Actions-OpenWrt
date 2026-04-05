@@ -12,8 +12,8 @@
 
 # 查看所有标签
 #git tag
-# 切换到标签 v25.12.0
-git checkout v25.12.0
+# 切换到标签 v25.12.2
+git checkout v25.12.2
 
 # 改为 ImmortalWrt 的 packages
 sed -i 's|^src-git packages https://git.openwrt.org/feed/packages.*|src-git packages https://github.com/immortalwrt/packages.git;openwrt-25.12|' feeds.conf.default

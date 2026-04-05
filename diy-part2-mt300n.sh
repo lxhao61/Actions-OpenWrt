@@ -21,8 +21,15 @@ sed -i 's/192.168.1.1/192.168.8.1/g' package/base-files/files/bin/config_generat
 sed -i "s/hostname='.*'/hostname='MT300Nv2'/g" package/base-files/files/bin/config_generate
 
 # 修改默认时区
-sed -i "s/timezone='.*'/timezone='CST-8'/g" package/base-files/files/bin/config_generate
-sed -i "/.*timezone='CST-8'.*/i\ set system.@system[-1].zonename='Asia/Shanghai'" package/base-files/files/bin/config_generate
+## 创建 uci-defaults 脚本
+mkdir -p files/etc/uci-defaults
+cat > files/etc/uci-defaults/99-timezone << 'EOF'
+#!/bin/sh
+uci set system.@system[0].timezone='CST-8'
+uci set system.@system[0].zonename='Asia/Shanghai'
+uci commit system
+EOF
+chmod +x files/etc/uci-defaults/99-timezone
 
 # 开启 WiFi 及接入配置
 sed -i 's/disabled=.*/disabled=0/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
@@ -39,8 +46,8 @@ git clone https://github.com/sbwml/packages_lang_golang.git -b 26.x feeds/packag
 rm -rf feeds/packages/net/{xray-core,v2ray-geodata,sing-box,chinadns-ng,dns2socks,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocks-rust,shadowsocksr-libev,simple-obfs,tcping,trojan-plus,tuic-client,v2ray-plugin,xray-plugin,geoview,shadow-tls}
 rm -rf package/feeds/packages/{xray-core,v2ray-geodata,sing-box,chinadns-ng,dns2socks,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocks-rust,shadowsocksr-libev,simple-obfs,tcping,trojan-plus,tuic-client,v2ray-plugin,xray-plugin,geoview,shadow-tls}
 # 拉取新的 passwall-packages
-git clone https://github.com/Openwrt-Passwall/openwrt-passwall-packages.git package/passwall-packages
-#cd package/passwall-packages
+git clone https://github.com/Openwrt-Passwall/openwrt-passwall-packages.git package/chajian/passwall-packages
+#cd package/chajian/passwall-packages
 #git checkout bc40fceb0488dfb5a4adb711cc1830a8021ee555
 #cd -
 
@@ -48,29 +55,39 @@ git clone https://github.com/Openwrt-Passwall/openwrt-passwall-packages.git pack
 rm -rf feeds/luci/applications/luci-app-passwall
 rm -rf package/feeds/luci/luci-app-passwall
 # 拉取新的 passwall-luci
-git clone https://github.com/Openwrt-Passwall/openwrt-passwall.git package/passwall-luci
-#cd package/passwall-luci
+git clone https://github.com/Openwrt-Passwall/openwrt-passwall.git package/chajian/passwall-luci
+#cd package/chajian/passwall-luci
 #git checkout ebd3355bdf2fcaa9e0c43ec0704a8d9d8cf9f658
 #cd -
 
 # 拉取 easytier、luci-app-easytier
-git clone https://github.com/EasyTier/luci-app-easytier.git package/easytier
+git clone https://github.com/EasyTier/luci-app-easytier.git package/chajian/easytier
 
 # 拉取锐捷认证
-git clone https://github.com/sbwml/luci-app-mentohust.git package/mentohust
+git clone https://github.com/sbwml/luci-app-mentohust.git package/chajian/mentohust
 
+# 删除自带的 open-app-filter
+rm -rf feeds/packages/net/open-app-filter
+rm -rf package/feeds/packages/open-app-filter
 # 拉取 OpenAppFilter、luci-app-oaf
-git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
+git clone https://github.com/destan19/OpenAppFilter.git package/chajian/OpenAppFilter
+
+# 拉取 luci-app-socat
+git clone https://github.com/chenmozhijin/luci-app-socat.git package/chajian/socat
 
 # 替换 tailscale 的默认启动脚本和配置
 sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
 # 拉取 luci-app-tailscale
-git clone https://github.com/asvow/luci-app-tailscale.git package/luci-app-tailscale
+git clone https://github.com/asvow/luci-app-tailscale.git package/chajian/tailscale/luci-app-tailscale
 
-# 删除自带的 luci-app-softethervpn
+# 筛选提取应用
+## 删除自带的 vlmcsd
+#rm -rf feeds/packages/net/vlmcsd
+## 删除自带的 luci-app-softethervpn
 rm -rf feeds/luci/applications/luci-app-softethervpn
-
-# 筛选程序
+## 删除自带的 luci-app-vlmcsd
+#rm -rf feeds/luci/applications/luci-app-vlmcsd
+## 筛选程序
 function merge_package(){
     # 参数1是分支名,参数2是库地址。所有文件下载到指定路径。
     # 同一个仓库下载多个文件夹直接在后面跟文件名或路径，空格分开。
@@ -89,10 +106,13 @@ function merge_package(){
     done
     cd "$rootdir"
 }
-# 提取 luci-app-softethervpn
-merge_package main https://github.com/kenzok8/small-package.git feeds/luci/applications luci-app-softethervpn
-# 提取 cpufreq
-merge_package openwrt-24.10 https://github.com/immortalwrt/immortalwrt.git package/emortal package/emortal/cpufreq
-# 提取 luci-app-socat
-#merge_package main https://github.com/Lienol/openwrt-package.git package/luci luci-app-socat
-merge_package main https://github.com/chenmozhijin/luci-app-socat.git package/luci luci-app-socat
+## 提取 cpufreq
+merge_package openwrt-25.12 https://github.com/immortalwrt/immortalwrt.git package/emortal package/emortal/cpufreq
+## 提取 fullconenat-nft
+merge_package openwrt-25.12 https://github.com/immortalwrt/immortalwrt.git package/network/utils package/network/utils/fullconenat-nft
+## 提取 vlmcsd
+#merge_package other https://github.com/Lienol/openwrt-package.git feeds/packages/net lean/vlmcsd
+## 提取 luci-app-softethervpn
+merge_package main https://github.com/Lienol/openwrt-package.git feeds/luci/applications luci-app-softethervpn
+## 提取 luci-app-vlmcsd
+#merge_package other https://github.com/Lienol/openwrt-package.git feeds/luci/applications lean/luci-app-vlmcsd
