@@ -104,8 +104,8 @@ merge_package openwrt-24.10 https://github.com/immortalwrt/immortalwrt.git packa
 ## 提取 fullconenat-nft
 merge_package openwrt-24.10 https://github.com/immortalwrt/immortalwrt.git package/network/utils package/network/utils/fullconenat-nft
 ## 提取 vlmcsd
-merge_package other https://github.com/Lienol/openwrt-package.git feeds/packages/net lean/vlmcsd
+merge_package main https://github.com/Lienol/openwrt-package.git feeds/packages/net other/lean/vlmcsd
 ## 提取 luci-app-softethervpn
 merge_package main https://github.com/Lienol/openwrt-package.git feeds/luci/applications luci-app-softethervpn
 ## 提取 luci-app-vlmcsd
-merge_package other https://github.com/Lienol/openwrt-package.git feeds/luci/applications lean/luci-app-vlmcsd
+merge_package main https://github.com/Lienol/openwrt-package.git feeds/luci/applications other/lean/luci-app-vlmcsd
