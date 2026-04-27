@@ -11,8 +11,7 @@
 #
 
 # 删除添加的第三方源配置
-sed -i '/lienol1/d' feeds.conf.default
-sed -i '/lienol2/d' feeds.conf.default
+sed -i '/lienol/d' feeds.conf.default
 
 # 修改默认 IP
 #sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generate
@@ -70,8 +69,8 @@ git clone https://github.com/gtolog/openwrt-msd_lite.git package/chajian/msd_lit
 git clone https://github.com/destan19/OpenAppFilter.git package/chajian/OpenAppFilter
 
 ## 删除自带的 luci-app-socat
-rm -rf feeds/lienol1/luci-app-socat
-rm -rf package/feeds/lienol1/luci-app-socat
+rm -rf feeds/lienol/luci-app-socat
+rm -rf package/feeds/lienol/luci-app-socat
 # 拉取 luci-app-socat
 git clone https://github.com/chenmozhijin/luci-app-socat.git package/chajian/socat
 

@@ -11,8 +11,7 @@
 #
 
 # 删除添加的第三方源配置
-sed -i '/lienol1/d' feeds.conf.default
-sed -i '/lienol2/d' feeds.conf.default
+sed -i '/lienol/d' feeds.conf.default
 
 # 修改默认 IP
 sed -i 's/192.168.1.1/192.168.5.1/g' package/base-files/files/bin/config_generate
@@ -59,8 +58,8 @@ git clone https://github.com/Openwrt-Passwall/openwrt-passwall.git package/chaji
 git clone https://github.com/EasyTier/luci-app-easytier.git package/chajian/easytier
 
 # 删除自带的 k3screenctrl
-rm -rf feeds/lienol2/lean/k3screenctrl
-rm -rf package/feeds/lienol2/k3screenctrl
+rm -rf feeds/lienol/other/lean/k3screenctrl
+rm -rf package/feeds/lienol/k3screenctrl
 # 拉取 k3screenctrl、luci-app-k3screenctrl
 git clone https://github.com/yangxu52/k3screenctrl_build.git package/chajian/k3buding/k3screenctrl
 git clone https://github.com/yangxu52/luci-app-k3screenctrl.git package/chajian/k3buding/luci-app-k3screenctrl
@@ -75,8 +74,8 @@ git clone https://github.com/gtolog/openwrt-msd_lite.git package/chajian/msd_lit
 git clone https://github.com/destan19/OpenAppFilter.git package/chajian/OpenAppFilter
 
 ## 删除自带的 luci-app-socat
-rm -rf feeds/lienol1/luci-app-socat
-rm -rf package/feeds/lienol1/luci-app-socat
+rm -rf feeds/lienol/luci-app-socat
+rm -rf package/feeds/lienol/luci-app-socat
 # 拉取 luci-app-socat
 git clone https://github.com/chenmozhijin/luci-app-socat.git package/chajian/socat
 
