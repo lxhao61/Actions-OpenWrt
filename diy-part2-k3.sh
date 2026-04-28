@@ -95,11 +95,11 @@ git clone https://github.com/Palatis/luci-app-temp-status.git package/chajian/st
 
 # 筛选提取应用
 ## 删除自带的 vlmcsd
-#rm -rf feeds/packages/net/vlmcsd
+rm -rf feeds/packages/net/vlmcsd
 ## 删除自带的 luci-app-softethervpn
 rm -rf feeds/luci/applications/luci-app-softethervpn
 ## 删除自带的 luci-app-vlmcsd
-#rm -rf feeds/luci/applications/luci-app-vlmcsd
+rm -rf feeds/luci/applications/luci-app-vlmcsd
 ## 删除自带的 luci-theme-argon
 rm -rf feeds/luci/theme/luci-theme-argon
 rm -rf package/feeds/luci/luci-theme-argon
@@ -129,12 +129,12 @@ merge_package openwrt-25.12 https://github.com/immortalwrt/immortalwrt.git packa
 ## 提取 fullconenat-nft
 merge_package openwrt-25.12 https://github.com/immortalwrt/immortalwrt.git package/network/utils package/network/utils/fullconenat-nft
 ## 提取 k3wifi
-merge_package other https://github.com/Lienol/openwrt-package.git package/chajian/k3buding k3wifi
+merge_package main https://github.com/Lienol/openwrt-package.git package/chajian/k3buding other/k3wifi
 ## 提取 vlmcsd
-#merge_package other https://github.com/Lienol/openwrt-package.git feeds/packages/net lean/vlmcsd
+merge_package main https://github.com/Lienol/openwrt-package.git feeds/packages/net other/lean/vlmcsd
 ## 提取 luci-app-softethervpn
 merge_package main https://github.com/Lienol/openwrt-package.git feeds/luci/applications luci-app-softethervpn
 ## 提取 luci-app-vlmcsd
-#merge_package other https://github.com/Lienol/openwrt-package.git feeds/luci/applications lean/luci-app-vlmcsd
+merge_package main https://github.com/Lienol/openwrt-package.git feeds/luci/applications other/lean/luci-app-vlmcsd
 ## 提取 luci-theme-argon
 merge_package openwrt-25.12 https://github.com/sbwml/luci-theme-argon.git package/chajian/argon luci-theme-argon
