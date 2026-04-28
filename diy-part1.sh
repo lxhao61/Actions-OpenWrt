@@ -22,8 +22,7 @@ sed -i 's|https://git.openwrt.org/feed/routing.git|https://github.com/openwrt/ro
 sed -i 's|https://git.openwrt.org/feed/telephony.git|https://github.com/openwrt/telephony.git|g' feeds.conf.default
 
 # 添加 lienol 大的 package
-echo 'src-git lienol1 https://github.com/Lienol/openwrt-package.git;main' >>feeds.conf.default
-echo 'src-git lienol2 https://github.com/Lienol/openwrt-package.git;other' >>feeds.conf.default
+echo 'src-git lienol https://github.com/Lienol/openwrt-package.git;main' >>feeds.conf.default
 
 # Uncomment a feed source
 #sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default

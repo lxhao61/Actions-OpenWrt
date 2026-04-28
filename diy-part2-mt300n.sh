@@ -11,8 +11,7 @@
 #
 
 # 删除添加的第三方源配置
-sed -i '/lienol1/d' feeds.conf.default
-sed -i '/lienol2/d' feeds.conf.default
+sed -i '/lienol/d' feeds.conf.default
 
 # 修改默认 IP
 #sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generate
@@ -77,8 +76,8 @@ git clone https://github.com/gtolog/openwrt-msd_lite.git package/chajian/msd_lit
 git clone https://github.com/destan19/OpenAppFilter.git package/chajian/OpenAppFilter
 
 ## 删除自带的 luci-app-socat
-rm -rf feeds/lienol1/luci-app-socat
-rm -rf package/feeds/lienol1/luci-app-socat
+rm -rf feeds/lienol/luci-app-socat
+rm -rf package/feeds/lienol/luci-app-socat
 # 拉取 luci-app-socat
 git clone https://github.com/chenmozhijin/luci-app-socat.git package/chajian/socat
 
@@ -90,16 +89,10 @@ git clone https://github.com/asvow/luci-app-tailscale.git package/chajian/tailsc
 # 筛选提取应用
 ## 删除自带的 ddns-scripts
 rm -rf feeds/packages/net/ddns-scripts
-## 删除自带的 vlmcsd
-rm -rf feeds/lienol2/lean/vlmcsd
-rm -rf package/feeds/lienol2/vlmcsd
 ## 删除自带的 luci-base
 rm -rf feeds/luci/modules/luci-base
 ## 删除自带的 luci-app-firewall
 rm -rf feeds/luci/applications/luci-app-firewall
-## 删除自带的 luci-app-vlmcsd
-rm -rf feeds/lienol2/lean/luci-app-vlmcsd
-rm -rf package/feeds/lienol2/luci-app-vlmcsd
 ## 筛选程序
 function merge_package(){
     # 参数1是分支名,参数2是库地址。所有文件下载到指定路径。
@@ -123,8 +116,8 @@ function merge_package(){
 merge_package openwrt-25.12 https://github.com/immortalwrt/packages.git feeds/packages/net net/ddns-scripts
 ## 提取 fullconenat-nft
 merge_package openwrt-25.12 https://github.com/immortalwrt/immortalwrt.git package/network/utils package/network/utils/fullconenat-nft
-## 提取 pdnsd-alt、upx、vlmcsd、luci-app-vlmcsd
-merge_package main https://github.com/kenzok8/jell.git package/chajian/kenzok8-package pdnsd-alt upx vlmcsd luci-app-vlmcsd
+## 提取 pdnsd-alt、upx
+merge_package main https://github.com/kenzok8/jell.git package/chajian/kenzok8-package pdnsd-alt upx
 ## 提取 luci-base
 merge_package openwrt-25.12 https://github.com/immortalwrt/luci.git feeds/luci/modules modules/luci-base
 ## 提取 luci-app-firewall
