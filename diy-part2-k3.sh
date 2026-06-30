@@ -137,4 +137,4 @@ merge_package main https://github.com/Lienol/openwrt-package.git feeds/luci/appl
 ## 提取 luci-app-vlmcsd
 merge_package main https://github.com/Lienol/openwrt-package.git feeds/luci/applications other/lean/luci-app-vlmcsd
 ## 提取 luci-theme-argon
-merge_package openwrt-25.12 https://github.com/sbwml/luci-theme-argon.git package/chajian/argon luci-theme-argon
+merge_package openwrt-23.05 https://github.com/sbwml/luci-theme-argon.git package/chajian/argon luci-theme-argon
