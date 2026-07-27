@@ -126,4 +126,4 @@ merge_package openwrt-24.10 https://github.com/immortalwrt/luci.git feeds/luci/m
 ## 提取 luci-app-firewall
 merge_package openwrt-24.10 https://github.com/immortalwrt/luci.git feeds/luci/applications applications/luci-app-firewall
 ## 提取 luci-theme-argon
-merge_package openwrt-24.10 https://github.com/sbwml/luci-theme-argon.git package/chajian/argon luci-theme-argon
+merge_package openwrt-23.05 https://github.com/sbwml/luci-theme-argon.git package/chajian/argon luci-theme-argon
