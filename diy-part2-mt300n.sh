@@ -10,29 +10,6 @@
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
 
-# 删除添加的第三方源配置
-sed -i '/lienol/d' feeds.conf.default
-
-# 修改默认 IP
-#sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generate
-sed -i 's/192.168.1.1/192.168.8.1/g' package/base-files/files/bin/config_generate
-
-# 修改默认主题
-#sed -i 's/luci-theme-bootstrap/luci-theme-material/g' feeds/luci/collections/luci-light/Makefile
-
-# 修改主机名
-sed -i "s/hostname='.*'/hostname='MT300Nv2'/g" package/base-files/files/bin/config_generate
-
-# 修改默认时区
-sed -i "s/timezone='.*'/timezone='CST-8'/g" package/base-files/files/bin/config_generate
-sed -i "/.*timezone='CST-8'.*/a\ set system.@system[-1].zonename='Asia/Shanghai'" package/base-files/files/bin/config_generate
-
-# 开启 WiFi 及接入配置
-sed -i 's/disabled=.*/disabled=0/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
-#sed -i 's/ssid=.*/ssid=MT300Nv2/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
-#sed -i 's/encryption=.*/encryption=psk-mixed/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
-#sed -i 's/key=.*/key=MT300Nv21891155/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
-
 # 删除自带的 golang
 rm -rf feeds/packages/lang/golang
 # 拉取新的 golang
@@ -79,7 +56,7 @@ sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/package
 # 拉取 luci-app-tailscale
 git clone https://github.com/asvow/luci-app-tailscale.git package/chajian/tailscale/luci-app-tailscale
 
-# 筛选提取应用
+# 特殊的替换配置
 ## 删除自带的 ddns-scripts
 rm -rf feeds/packages/net/ddns-scripts
 ## 删除自带的 luci-base
@@ -115,3 +92,26 @@ merge_package main https://github.com/kenzok8/jell.git package/chajian/kenzok8-p
 merge_package openwrt-24.10 https://github.com/immortalwrt/luci.git feeds/luci/modules modules/luci-base
 ## 提取 luci-app-firewall
 merge_package openwrt-24.10 https://github.com/immortalwrt/luci.git feeds/luci/applications applications/luci-app-firewall
+
+# 删除 feeds.conf.default 中添加的第三方源
+sed -i '/lienol/d' feeds.conf.default
+
+# 修改默认 IP
+#sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.8.1/g' package/base-files/files/bin/config_generate
+
+# 修改默认主题
+#sed -i 's/luci-theme-bootstrap/luci-theme-material/g' feeds/luci/collections/luci-light/Makefile
+
+# 修改主机名
+sed -i "s/hostname='.*'/hostname='MT300Nv2'/g" package/base-files/files/bin/config_generate
+
+# 修改默认时区
+sed -i "s/timezone='.*'/timezone='CST-8'/g" package/base-files/files/bin/config_generate
+sed -i "/.*timezone='CST-8'.*/a\ set system.@system[-1].zonename='Asia/Shanghai'" package/base-files/files/bin/config_generate
+
+# 开启 WiFi 及接入配置
+sed -i 's/disabled=.*/disabled=0/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
+#sed -i 's/ssid=.*/ssid=MT300Nv2/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
+#sed -i 's/encryption=.*/encryption=psk-mixed/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
+#sed -i 's/key=.*/key=MT300Nv21891155/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
