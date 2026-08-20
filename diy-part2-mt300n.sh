@@ -48,7 +48,7 @@ git clone https://github.com/destan19/OpenAppFilter.git package/chajian/OpenAppF
 ## 删除自带的 luci-app-socat
 rm -rf feeds/lienol/luci-app-socat
 rm -rf package/feeds/lienol/luci-app-socat
-# 拉取 luci-app-socat
+# 拉取新的 luci-app-socat
 git clone https://github.com/chenmozhijin/luci-app-socat.git package/chajian/socat
 
 # 替换 tailscale 的默认启动脚本和配置
@@ -88,9 +88,9 @@ merge_package openwrt-24.10 https://github.com/immortalwrt/packages.git feeds/pa
 merge_package openwrt-24.10 https://github.com/immortalwrt/immortalwrt.git package/network/utils package/network/utils/fullconenat-nft
 ## 提取 pdnsd-alt、upx
 merge_package main https://github.com/kenzok8/jell.git package/chajian/kenzok8-package pdnsd-alt upx
-## 提取 luci-base
+## 提取 luci-base（如上 fullconenat-nft 需要）
 merge_package openwrt-24.10 https://github.com/immortalwrt/luci.git feeds/luci/modules modules/luci-base
-## 提取 luci-app-firewall
+## 提取 luci-app-firewall（如上 fullconenat-nft 需要）
 merge_package openwrt-24.10 https://github.com/immortalwrt/luci.git feeds/luci/applications applications/luci-app-firewall
 
 # 删除 feeds.conf.default 中添加的第三方源
