@@ -39,13 +39,13 @@ git clone https://github.com/EasyTier/luci-app-easytier.git package/chajian/easy
 # 删除自带的 phicomm-k3screenctrl
 rm -rf feeds/packages/utils/phicomm-k3screenctrl
 rm -rf package/feeds/packages/phicomm-k3screenctrl
-# 拉取 k3screenctrl
+# 拉取新的 k3screenctrl
 git clone https://github.com/yangxu52/k3screenctrl_build.git package/chajian/k3buding/k3screenctrl
 
 # 删除自带的 luci-app-k3screenctrl
 rm -rf feeds/luci/applications/luci-app-k3screenctrl
 rm -rf package/feeds/luci/luci-app-k3screenctrl
-# 拉取 luci-app-k3screenctrl
+# 拉取新的 luci-app-k3screenctrl
 git clone https://github.com/yangxu52/luci-app-k3screenctrl.git package/chajian/k3buding/luci-app-k3screenctrl
 
 # 拉取锐捷认证
@@ -54,7 +54,7 @@ git clone https://github.com/sbwml/luci-app-mentohust.git package/chajian/mentoh
 # 删除自带的 open-app-filter
 rm -rf feeds/packages/net/open-app-filter
 rm -rf package/feeds/packages/open-app-filter
-# 拉取 OpenAppFilter、luci-app-oaf
+# 拉取新的 OpenAppFilter、luci-app-oaf
 git clone https://github.com/destan19/OpenAppFilter.git package/chajian/OpenAppFilter
 
 # 拉取 luci-app-socat
@@ -68,16 +68,30 @@ git clone https://github.com/asvow/luci-app-tailscale.git package/chajian/tailsc
 # 拉取 luci-app-temp-status
 git clone https://github.com/Palatis/luci-app-temp-status.git package/chajian/status/luci-app-temp-status
 
+# 删除自带的 luci-theme-argon
+rm -rf feeds/luci/themes/luci-theme-argon
+rm -rf package/feeds/luci/luci-theme-argon
+# 删除自带的 luci-app-argon-config
+rm -rf feeds/luci/applications/luci-app-argon-config
+rm -rf package/feeds/luci/luci-app-argon-config
+# 拉取新的 luci-theme-argon
+#git clone https://github.com/jerrykuku/luci-theme-argon.git -b master package/chajian/argon/luci-theme-argon
+# 拉取新的 luci-app-argon-config
+#git clone https://github.com/jerrykuku/luci-app-argon-config.git -b master package/chajian/argon/luci-app-argon-config
+# 拉取新的 luci-theme-argon、luci-app-argon-config
+git clone https://github.com/sbwml/luci-theme-argon.git -b openwrt-25.12-legacy package/chajian/argon
+
 # 特殊的替换配置
+## 删除自带的 lib
+rm -rf target/linux/bcm53xx/base-files/lib
 ## 删除自带的 vlmcsd
 rm -rf feeds/packages/net/vlmcsd
+## 删除自带的 luci-app-hd-idle
+rm -rf feeds/luci/applications/luci-app-hd-idle
 ## 删除自带的 luci-app-softethervpn
 rm -rf feeds/luci/applications/luci-app-softethervpn
 ## 删除自带的 luci-app-vlmcsd
 rm -rf feeds/luci/applications/luci-app-vlmcsd
-## 删除自带的 luci-theme-argon
-rm -rf feeds/luci/theme/luci-theme-argon
-rm -rf package/feeds/luci/luci-theme-argon
 ## 筛选程序
 function merge_package(){
     # 参数1是分支名,参数2是库地址。所有文件下载到指定路径。
@@ -105,21 +119,25 @@ merge_package openwrt-25.12 https://github.com/immortalwrt/immortalwrt.git packa
 merge_package openwrt-25.12 https://github.com/immortalwrt/immortalwrt.git package/network/utils package/network/utils/fullconenat-nft
 ## 提取 k3wifi
 merge_package main https://github.com/Lienol/openwrt-package.git package/chajian/k3buding other/k3wifi
+## 提取 lib（修复更新固件配置丢失）
+merge_package main https://github.com/openwrt/openwrt.git target/linux/bcm53xx/base-files target/linux/bcm53xx/base-files/lib
+## 提取 px5g-openssl
+merge_package openwrt-25.12 https://github.com/immortalwrt/immortalwrt.git package/utils package/utils/px5g-openssl
 ## 提取 vlmcsd
 merge_package main https://github.com/Lienol/openwrt-package.git feeds/packages/net other/lean/vlmcsd
+## 提取 luci-app-hd-idle
+merge_package openwrt-25.12 https://github.com/openwrt/luci.git feeds/luci/applications applications/luci-app-hd-idle
 ## 提取 luci-app-softethervpn
 merge_package main https://github.com/Lienol/openwrt-package.git feeds/luci/applications luci-app-softethervpn
 ## 提取 luci-app-vlmcsd
 merge_package main https://github.com/Lienol/openwrt-package.git feeds/luci/applications other/lean/luci-app-vlmcsd
-## 提取 luci-theme-argon
-merge_package openwrt-23.05 https://github.com/sbwml/luci-theme-argon.git package/chajian/argon luci-theme-argon
 
 # 修改默认 IP
 sed -i 's/192.168.1.1/192.168.5.1/g' package/base-files/files/bin/config_generate
 #sed -i 's/192.168.1.1/192.168.8.1/g' package/base-files/files/bin/config_generate
 
 # 修改默认主题
-#sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci-light/Makefile
+sed -i 's/luci-theme-bootstrap/luci-theme-material/g' feeds/luci/collections/luci-light/Makefile
 
 # 修改主机名
 sed -i "s/hostname='.*'/hostname='K3'/g" package/base-files/files/bin/config_generate
