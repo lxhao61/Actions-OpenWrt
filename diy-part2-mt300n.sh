@@ -42,7 +42,7 @@ git clone https://github.com/sbwml/luci-app-mentohust.git package/chajian/mentoh
 # 删除自带的 open-app-filter
 rm -rf feeds/packages/net/open-app-filter
 rm -rf package/feeds/packages/open-app-filter
-# 拉取 OpenAppFilter、luci-app-oaf
+# 拉取新的 OpenAppFilter、luci-app-oaf
 git clone https://github.com/destan19/OpenAppFilter.git package/chajian/OpenAppFilter
 
 # 拉取 luci-app-socat
@@ -56,6 +56,8 @@ git clone https://github.com/asvow/luci-app-tailscale.git package/chajian/tailsc
 # 特殊的替换配置
 ## 删除自带的 vlmcsd
 rm -rf feeds/packages/net/vlmcsd
+## 删除自带的 luci-app-hd-idle
+rm -rf feeds/luci/applications/luci-app-hd-idle
 ## 删除自带的 luci-app-softethervpn
 rm -rf feeds/luci/applications/luci-app-softethervpn
 ## 删除自带的 luci-app-vlmcsd
@@ -85,6 +87,8 @@ merge_package openwrt-24.10 https://github.com/immortalwrt/immortalwrt.git packa
 merge_package openwrt-24.10 https://github.com/immortalwrt/immortalwrt.git package/network/utils package/network/utils/fullconenat-nft
 ## 提取 vlmcsd
 merge_package main https://github.com/Lienol/openwrt-package.git feeds/packages/net other/lean/vlmcsd
+## 提取 luci-app-hd-idle
+merge_package openwrt-24.10 https://github.com/openwrt/luci.git feeds/luci/applications applications/luci-app-hd-idle
 ## 提取 luci-app-softethervpn
 merge_package main https://github.com/Lienol/openwrt-package.git feeds/luci/applications luci-app-softethervpn
 ## 提取 luci-app-vlmcsd
