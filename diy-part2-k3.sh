@@ -71,7 +71,7 @@ git clone https://github.com/Palatis/luci-app-temp-status.git package/chajian/st
 # 拉取 luci-app-argon-config
 #git clone https://github.com/jerrykuku/luci-app-argon-config.git -b master package/chajian/argon/luci-app-argon-config
 # 拉取 luci-theme-argon、luci-app-argon-config
-git clone https://github.com/sbwml/luci-theme-argon.git -b openwrt-24.10 package/chajian/argon
+git clone https://github.com/sbwml/luci-theme-argon.git -b openwrt-23.05 package/chajian/argon
 
 # 特殊的替换配置
 ## 删除自带的 ddns-scripts
@@ -102,19 +102,19 @@ function merge_package(){
     cd "$rootdir"
 }
 ## 提取 brcmfmac-firmware-4366c0-pcie-k3
-merge_package openwrt-24.10 https://github.com/immortalwrt/immortalwrt.git package/chajian/k3buding package/firmware/brcmfmac4366c0-firmware-k3
+merge_package openwrt-23.05 https://github.com/immortalwrt/immortalwrt.git package/chajian/k3buding package/firmware/brcmfmac4366c0-firmware-k3
 ## 提取 ddns-scripts
-merge_package openwrt-24.10 https://github.com/immortalwrt/packages.git feeds/packages/net net/ddns-scripts
+merge_package openwrt-23.05 https://github.com/immortalwrt/packages.git feeds/packages/net net/ddns-scripts
 ## 提取 fullconenat-nft
-merge_package openwrt-24.10 https://github.com/immortalwrt/immortalwrt.git package/network/utils package/network/utils/fullconenat-nft
+merge_package openwrt-23.05 https://github.com/immortalwrt/immortalwrt.git package/network/utils package/network/utils/fullconenat-nft
 ## 提取 pdnsd-alt、upx
 merge_package main https://github.com/kenzok8/jell.git package/chajian/kenzok8-package pdnsd-alt upx
 ## 提取 lib（修复更新固件配置丢失）
 merge_package main https://github.com/openwrt/openwrt.git target/linux/bcm53xx/base-files target/linux/bcm53xx/base-files/lib
 ## 提取 luci-base（如上 fullconenat-nft 需要）
-merge_package openwrt-24.10 https://github.com/immortalwrt/luci.git feeds/luci/modules modules/luci-base
+merge_package openwrt-23.05 https://github.com/immortalwrt/luci.git feeds/luci/modules modules/luci-base
 ## 提取 luci-app-firewall（如上 fullconenat-nft 需要）
-merge_package openwrt-24.10 https://github.com/immortalwrt/luci.git feeds/luci/applications applications/luci-app-firewall
+merge_package openwrt-23.05 https://github.com/immortalwrt/luci.git feeds/luci/applications applications/luci-app-firewall
 
 # 删除 feeds.conf.default 中添加的第三方源
 sed -i '/lienol/d' feeds.conf.default
