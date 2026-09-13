@@ -18,9 +18,9 @@ rm -rf target/linux/bcm53xx/base-files/lib
 ## 删除自带的 tailscale
 rm -rf feeds/packages/net/tailscale
 ## 删除自带的 luci-base
-rm -rf feeds/luci/modules/luci-base
+#rm -rf feeds/luci/modules/luci-base
 ## 删除自带的 luci-app-firewall
-rm -rf feeds/luci/applications/luci-app-firewall
+#rm -rf feeds/luci/applications/luci-app-firewall
 ## 筛选程序
 function merge_package(){
     # 参数1是分支名,参数2是库地址。所有文件下载到指定路径。
