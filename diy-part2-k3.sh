@@ -45,7 +45,7 @@ merge_package openwrt-25.12 https://github.com/immortalwrt/immortalwrt.git packa
 ## 提取 ddns-scripts
 merge_package openwrt-25.12 https://github.com/immortalwrt/packages.git feeds/packages/net net/ddns-scripts
 ## 提取 fullconenat-nft
-merge_package openwrt-25.12 https://github.com/immortalwrt/immortalwrt.git package/network/utils package/network/utils/fullconenat-nft
+#merge_package openwrt-25.12 https://github.com/immortalwrt/immortalwrt.git package/network/utils package/network/utils/fullconenat-nft
 ## 提取 pdnsd-alt、upx
 merge_package main https://github.com/kenzok8/jell.git package/chajian/kenzok8-package pdnsd-alt upx
 ## 提取 lib（修复更新固件配置丢失）
@@ -53,9 +53,9 @@ merge_package main https://github.com/openwrt/openwrt.git target/linux/bcm53xx/b
 ## 提取 tailscale（兼容如下 golang 27.x）
 merge_package master https://github.com/openwrt/packages.git feeds/packages/net net/tailscale
 ## 提取 luci-base（如上 fullconenat-nft 需要）
-merge_package openwrt-25.12 https://github.com/immortalwrt/luci.git feeds/luci/modules modules/luci-base
+#merge_package openwrt-25.12 https://github.com/immortalwrt/luci.git feeds/luci/modules modules/luci-base
 ## 提取 luci-app-firewall（如上 fullconenat-nft 需要）
-merge_package openwrt-25.12 https://github.com/immortalwrt/luci.git feeds/luci/applications applications/luci-app-firewall
+#merge_package openwrt-25.12 https://github.com/immortalwrt/luci.git feeds/luci/applications applications/luci-app-firewall
 
 # 删除自带的 golang
 rm -rf feeds/packages/lang/golang
