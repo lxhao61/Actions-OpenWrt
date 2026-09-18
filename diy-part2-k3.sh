@@ -89,7 +89,8 @@ git clone https://github.com/yangxu52/luci-app-k3screenctrl.git package/chajian/
 git clone https://github.com/sbwml/luci-app-mentohust.git package/chajian/mentohust
 
 # 拉取 msd_lite、luci-app-msd_lite
-git clone https://github.com/gtolog/openwrt-msd_lite.git package/chajian/msd_lite
+git clone https://github.com/maxmib/luci-app-msd-lite.git package/chajian/msd_lite
+#git clone https://github.com/gtolog/openwrt-msd_lite.git package/chajian/msd_lite
 
 # 拉取 OpenAppFilter、luci-app-oaf
 git clone https://github.com/destan19/OpenAppFilter.git package/chajian/OpenAppFilter
