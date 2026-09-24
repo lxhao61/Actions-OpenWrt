@@ -12,7 +12,7 @@
 
 # 特殊的替换配置
 ## 删除自带的 ddns-scripts
-rm -rf feeds/packages/net/ddns-scripts
+#rm -rf feeds/packages/net/ddns-scripts
 ## 删除自带的 luci-app-firewall
 rm -rf feeds/luci/applications/luci-app-firewall
 ## 删除自带的 luci-base
@@ -37,7 +37,7 @@ function merge_package(){
     cd "$rootdir"
 }
 ## 提取 ddns-scripts
-merge_package openwrt-24.10 https://github.com/immortalwrt/packages.git feeds/packages/net net/ddns-scripts
+#merge_package openwrt-24.10 https://github.com/immortalwrt/packages.git feeds/packages/net net/ddns-scripts
 ## 提取 fullconenat-nft
 merge_package openwrt-24.10 https://github.com/immortalwrt/immortalwrt.git package/network/utils package/network/utils/fullconenat-nft
 ## 提取 pdnsd-alt、upx
@@ -74,7 +74,8 @@ git clone https://github.com/EasyTier/luci-app-easytier.git package/chajian/easy
 git clone https://github.com/sbwml/luci-app-mentohust.git package/chajian/mentohust
 
 # 拉取 msd_lite、luci-app-msd_lite
-git clone https://github.com/gtolog/openwrt-msd_lite.git package/chajian/msd_lite
+git clone https://github.com/maxmib/luci-app-msd-lite.git package/chajian/msd_lite
+#git clone https://github.com/gtolog/openwrt-msd_lite.git package/chajian/msd_lite
 
 # 拉取 OpenAppFilter、luci-app-oaf
 git clone https://github.com/destan19/OpenAppFilter.git package/chajian/OpenAppFilter

@@ -12,7 +12,7 @@
 
 # 特殊的替换配置
 ## 删除自带的 ddns-scripts
-rm -rf feeds/packages/net/ddns-scripts
+#rm -rf feeds/packages/net/ddns-scripts
 ## 删除自带的 lib
 rm -rf target/linux/bcm53xx/base-files/lib
 ## 删除自带的 luci-app-firewall
@@ -41,7 +41,7 @@ function merge_package(){
 ## 提取 brcmfmac-firmware-4366c0-pcie-k3
 merge_package openwrt-24.10 https://github.com/immortalwrt/immortalwrt.git package/chajian/k3buding package/firmware/brcmfmac4366c0-firmware-k3
 ## 提取 ddns-scripts
-merge_package openwrt-24.10 https://github.com/immortalwrt/packages.git feeds/packages/net net/ddns-scripts
+#merge_package openwrt-24.10 https://github.com/immortalwrt/packages.git feeds/packages/net net/ddns-scripts
 ## 提取 fullconenat-nft
 merge_package openwrt-24.10 https://github.com/immortalwrt/immortalwrt.git package/network/utils package/network/utils/fullconenat-nft
 ## 提取 pdnsd-alt、upx
@@ -89,7 +89,8 @@ git clone https://github.com/yangxu52/luci-app-k3screenctrl.git package/chajian/
 git clone https://github.com/sbwml/luci-app-mentohust.git package/chajian/mentohust
 
 # 拉取 msd_lite、luci-app-msd_lite
-git clone https://github.com/gtolog/openwrt-msd_lite.git package/chajian/msd_lite
+git clone https://github.com/maxmib/luci-app-msd-lite.git package/chajian/msd_lite
+#git clone https://github.com/gtolog/openwrt-msd_lite.git package/chajian/msd_lite
 
 # 拉取 OpenAppFilter、luci-app-oaf
 git clone https://github.com/destan19/OpenAppFilter.git package/chajian/OpenAppFilter
