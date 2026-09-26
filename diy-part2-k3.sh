@@ -12,7 +12,7 @@
 
 # 特殊的替换配置
 ## 删除自带的 ddns-scripts
-rm -rf feeds/packages/net/ddns-scripts
+#rm -rf feeds/packages/net/ddns-scripts
 ## 删除自带的 lib
 rm -rf target/linux/bcm53xx/base-files/lib
 ## 删除自带的 tailscale
@@ -21,6 +21,8 @@ rm -rf feeds/packages/net/tailscale
 rm -rf feeds/luci/applications/luci-app-firewall
 ## 删除自带的 luci-base
 rm -rf feeds/luci/modules/luci-base
+## 删除自带的 luci-mod-network
+rm -rf feeds/luci/modules/luci-mod-network
 ## 筛选程序
 function merge_package(){
     # 参数1是分支名,参数2是库地址。所有文件下载到指定路径。
@@ -43,7 +45,7 @@ function merge_package(){
 ## 提取 brcmfmac-firmware-4366c0-pcie-k3
 merge_package openwrt-25.12 https://github.com/immortalwrt/immortalwrt.git package/chajian/k3buding package/firmware/brcmfmac4366c0-firmware-k3
 ## 提取 ddns-scripts
-merge_package openwrt-25.12 https://github.com/immortalwrt/packages.git feeds/packages/net net/ddns-scripts
+#merge_package openwrt-25.12 https://github.com/immortalwrt/packages.git feeds/packages/net net/ddns-scripts
 ## 提取 fullconenat-nft
 merge_package openwrt-25.12 https://github.com/immortalwrt/immortalwrt.git package/network/utils package/network/utils/fullconenat-nft
 ## 提取 pdnsd-alt、upx
@@ -56,6 +58,8 @@ merge_package openwrt-24.10 https://github.com/openwrt/packages.git feeds/packag
 merge_package openwrt-25.12 https://github.com/immortalwrt/luci.git feeds/luci/applications applications/luci-app-firewall
 ## 提取 luci-base（如上 fullconenat-nft 需要）
 merge_package openwrt-25.12 https://github.com/immortalwrt/luci.git feeds/luci/modules modules/luci-base
+## 提取 luci-mod-network（使用更新解决虚拟动态接口显示无效链路状态问题）
+merge_package openwrt-25.12 https://github.com/openwrt/luci.git feeds/luci/modules modules/luci-mod-network
 
 # 删除自带的 golang
 rm -rf feeds/packages/lang/golang
@@ -93,7 +97,8 @@ git clone https://github.com/yangxu52/luci-app-k3screenctrl.git package/chajian/
 git clone https://github.com/sbwml/luci-app-mentohust.git package/chajian/mentohust
 
 # 拉取 msd_lite、luci-app-msd_lite
-git clone https://github.com/gtolog/openwrt-msd_lite.git package/chajian/msd_lite
+git clone https://github.com/maxmib/luci-app-msd-lite.git package/chajian/msd_lite
+#git clone https://github.com/gtolog/openwrt-msd_lite.git package/chajian/msd_lite
 
 # 拉取 OpenAppFilter、luci-app-oaf
 git clone https://github.com/destan19/OpenAppFilter.git package/chajian/OpenAppFilter
