@@ -50,6 +50,8 @@ merge_package openwrt-24.10 https://github.com/immortalwrt/immortalwrt.git packa
 merge_package main https://github.com/Lienol/openwrt-package.git package/chajian/k3buding other/k3wifi
 ## 提取 lib（修复更新固件配置丢失）
 merge_package main https://github.com/openwrt/openwrt.git target/linux/bcm53xx/base-files target/linux/bcm53xx/base-files/lib
+## 提取 rpcd-mod-rad3-enc（没同步的 luci-app-radicale3 依赖）
+merge_package master https://github.com/openwrt/luci.git package/feeds/luci libs/rpcd-mod-rad3-enc
 ## 提取 vlmcsd
 merge_package main https://github.com/Lienol/openwrt-package.git feeds/packages/net other/lean/vlmcsd
 ## 提取 luci-app-hd-idle

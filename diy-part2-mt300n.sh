@@ -42,6 +42,8 @@ function merge_package(){
 merge_package openwrt-24.10 https://github.com/immortalwrt/immortalwrt.git package/emortal package/emortal/cpufreq
 ## 提取 fullconenat-nft
 merge_package openwrt-24.10 https://github.com/immortalwrt/immortalwrt.git package/network/utils package/network/utils/fullconenat-nft
+## 提取 rpcd-mod-rad3-enc（没同步的 luci-app-radicale3 依赖）
+merge_package master https://github.com/openwrt/luci.git package/feeds/luci libs/rpcd-mod-rad3-enc
 ## 提取 vlmcsd
 merge_package main https://github.com/Lienol/openwrt-package.git feeds/packages/net other/lean/vlmcsd
 ## 提取 luci-app-hd-idle
