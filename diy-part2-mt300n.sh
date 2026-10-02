@@ -11,14 +11,16 @@
 #
 
 # 特殊的替换配置
-## 删除自带的 ddns-scripts
-rm -rf feeds/packages/net/ddns-scripts
+## 删除自带的 boost
+rm -rf feeds/packages/libs/boost
 ## 删除自带的 tailscale
 rm -rf feeds/packages/net/tailscale
 ## 删除自带的 luci-app-firewall
 rm -rf feeds/luci/applications/luci-app-firewall
 ## 删除自带的 luci-base
 rm -rf feeds/luci/modules/luci-base
+## 删除自带的 luci-mod-network
+rm -rf feeds/luci/modules/luci-mod-network
 ## 筛选程序
 function merge_package(){
     # 参数1是分支名,参数2是库地址。所有文件下载到指定路径。
@@ -38,10 +40,12 @@ function merge_package(){
     done
     cd "$rootdir"
 }
-## 提取 ddns-scripts
-merge_package openwrt-25.12 https://github.com/immortalwrt/packages.git feeds/packages/net net/ddns-scripts
+## 提取 boost（当前 rblibtorrent 需要）
+merge_package openwrt-24.10 https://github.com/openwrt/packages.git feeds/packages/libs libs/boost
 ## 提取 fullconenat-nft
 merge_package openwrt-25.12 https://github.com/immortalwrt/immortalwrt.git package/network/utils package/network/utils/fullconenat-nft
+## 提取 pcre（当前 luci-app-nginx-pingos 需要）
+merge_package 25.12 https://github.com/Lienol/openwrt-packages.git package/feeds/packages libs/pcre
 ## 提取 pdnsd-alt、upx
 merge_package main https://github.com/kenzok8/jell.git package/chajian/kenzok8-package pdnsd-alt upx
 ## 提取 tailscale（兼容如下 golang 27.x）
@@ -50,6 +54,8 @@ merge_package openwrt-24.10 https://github.com/openwrt/packages.git feeds/packag
 merge_package openwrt-25.12 https://github.com/immortalwrt/luci.git feeds/luci/applications applications/luci-app-firewall
 ## 提取 luci-base（如上 fullconenat-nft 需要）
 merge_package openwrt-25.12 https://github.com/immortalwrt/luci.git feeds/luci/modules modules/luci-base
+## 提取 luci-mod-network（使用更新解决虚拟动态接口显示无效链路状态问题）
+merge_package openwrt-25.12 https://github.com/openwrt/luci.git feeds/luci/modules modules/luci-mod-network
 
 # 删除自带的 golang
 rm -rf feeds/packages/lang/golang
@@ -78,7 +84,8 @@ git clone https://github.com/EasyTier/luci-app-easytier.git package/chajian/easy
 git clone https://github.com/sbwml/luci-app-mentohust.git package/chajian/mentohust
 
 # 拉取 msd_lite、luci-app-msd_lite
-git clone https://github.com/gtolog/openwrt-msd_lite.git package/chajian/msd_lite
+git clone https://github.com/maxmib/luci-app-msd-lite.git package/chajian/msd_lite
+#git clone https://github.com/gtolog/openwrt-msd_lite.git package/chajian/msd_lite
 
 # 拉取 OpenAppFilter、luci-app-oaf
 git clone https://github.com/destan19/OpenAppFilter.git package/chajian/OpenAppFilter
@@ -96,6 +103,10 @@ git clone https://github.com/asvow/luci-app-tailscale.git package/chajian/tailsc
 
 # 删除 feeds.conf.default 中添加的第三方源
 sed -i '/lienol/d' feeds.conf.default
+
+# 删除第三方源自带的 luci-app-mtwifi
+rm -rf feeds/lienol/other/lean/mt
+rm -rf package/feeds/lienol/luci-app-mtwifi
 
 # 修改默认 IP
 #sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generate
