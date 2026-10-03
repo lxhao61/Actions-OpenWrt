@@ -21,6 +21,12 @@ rm -rf feeds/packages/net/tailscale
 rm -rf feeds/luci/applications/luci-app-firewall
 ## 删除自带的 luci-base
 rm -rf feeds/luci/modules/luci-base
+## 删除自带的 luci-lib-base
+rm -rf feeds/luci/libs/luci-lib-base
+## 删除自带的 luci-lib-ip
+rm -rf feeds/luci/libs/luci-lib-ip
+## 删除自带的 luci-lib-jsonc
+rm -rf feeds/luci/libs/luci-lib-jsonc
 ## 删除自带的 luci-lib-nixio
 rm -rf feeds/luci/libs/luci-lib-nixio
 ## 删除自带的 luci-mod-admin-full
@@ -29,6 +35,8 @@ rm -rf feeds/luci/modules/luci-mod-admin-full
 rm -rf feeds/luci/modules/luci-mod-network
 ## 删除自带的 luci-mod-status
 rm -rf feeds/luci/modules/luci-mod-status
+## 删除自带的 luci-mod-system
+rm -rf feeds/luci/modules/luci-mod-system
 ## 筛选程序
 function merge_package(){
     # 参数1是分支名,参数2是库地址。所有文件下载到指定路径。
@@ -66,6 +74,12 @@ merge_package openwrt-24.10 https://github.com/openwrt/packages.git feeds/packag
 merge_package openwrt-25.12 https://github.com/immortalwrt/luci.git feeds/luci/applications applications/luci-app-firewall
 ## 提取 luci-base（如上 fullconenat-nft 需要）
 merge_package openwrt-25.12 https://github.com/immortalwrt/luci.git feeds/luci/modules modules/luci-base
+## 提取 luci-lib-base
+merge_package openwrt-25.12 https://github.com/immortalwrt/luci.git feeds/luci/libs libs/luci-lib-base
+## 提取 luci-lib-ip
+merge_package openwrt-25.12 https://github.com/immortalwrt/luci.git feeds/luci/libs libs/luci-lib-ip
+## 提取 luci-lib-jsonc
+merge_package openwrt-25.12 https://github.com/immortalwrt/luci.git feeds/luci/libs libs/luci-lib-jsonc
 ## 提取 luci-lib-nixio
 merge_package openwrt-25.12 https://github.com/immortalwrt/luci.git feeds/luci/libs libs/luci-lib-nixio
 ## 提取 luci-mod-admin-full
@@ -74,6 +88,8 @@ merge_package openwrt-25.12 https://github.com/immortalwrt/luci.git feeds/luci/m
 merge_package openwrt-25.12 https://github.com/openwrt/luci.git feeds/luci/modules modules/luci-mod-network
 ## 提取 luci-mod-status
 merge_package openwrt-25.12 https://github.com/immortalwrt/luci.git feeds/luci/modules modules/luci-mod-status
+## 提取 luci-mod-system
+merge_package openwrt-25.12 https://github.com/immortalwrt/luci.git feeds/luci/modules modules/luci-mod-system
 
 # 删除自带的 golang
 rm -rf feeds/packages/lang/golang
