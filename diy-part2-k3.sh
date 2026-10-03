@@ -21,6 +21,8 @@ rm -rf feeds/packages/net/tailscale
 rm -rf feeds/luci/applications/luci-app-firewall
 ## 删除自带的 luci-base
 rm -rf feeds/luci/modules/luci-base
+## 删除自带的 luci-mod-admin-full
+rm -rf feeds/luci/modules/luci-mod-admin-full
 ## 删除自带的 luci-mod-network
 rm -rf feeds/luci/modules/luci-mod-network
 ## 筛选程序
@@ -60,6 +62,8 @@ merge_package openwrt-24.10 https://github.com/openwrt/packages.git feeds/packag
 merge_package openwrt-25.12 https://github.com/immortalwrt/luci.git feeds/luci/applications applications/luci-app-firewall
 ## 提取 luci-base（如上 fullconenat-nft 需要）
 merge_package openwrt-25.12 https://github.com/immortalwrt/luci.git feeds/luci/modules modules/luci-base
+## 提取 luci-mod-admin-full
+merge_package openwrt-25.12 https://github.com/immortalwrt/luci.git feeds/luci/modules modules/luci-mod-admin-full
 ## 提取 luci-mod-network（使用更新解决虚拟动态接口显示无效链路状态问题）
 merge_package openwrt-25.12 https://github.com/openwrt/luci.git feeds/luci/modules modules/luci-mod-network
 
