@@ -86,11 +86,6 @@ rm -rf package/feeds/lienol/luci-app-socat
 # 拉取新的 luci-app-socat
 git clone https://github.com/chenmozhijin/luci-app-socat.git package/chajian/socat
 
-# 替换 tailscale 的默认启动脚本和配置
-sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
-# 拉取 luci-app-tailscale
-git clone https://github.com/asvow/luci-app-tailscale.git package/chajian/tailscale/luci-app-tailscale
-
 # 删除 feeds.conf.default 中添加的第三方源
 sed -i '/lienol/d' feeds.conf.default
 
