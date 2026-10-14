@@ -11,8 +11,6 @@
 #
 
 # 特殊的替换配置
-## 删除自带的 tailscale
-rm -rf feeds/packages/net/tailscale
 ## 删除自带的 vlmcsd
 rm -rf feeds/packages/net/vlmcsd
 ## 删除自带的 luci-app-hd-idle
@@ -46,8 +44,6 @@ merge_package openwrt-25.12 https://github.com/immortalwrt/immortalwrt.git packa
 merge_package openwrt-25.12 https://github.com/immortalwrt/immortalwrt.git package/network/utils package/network/utils/fullconenat-nft
 ## 提取 px5g-openssl
 merge_package openwrt-25.12 https://github.com/immortalwrt/immortalwrt.git package/utils package/utils/px5g-openssl
-## 提取 tailscale（兼容如下 golang 27.x）
-merge_package openwrt-24.10 https://github.com/openwrt/packages.git feeds/packages/net net/tailscale
 ## 提取 vlmcsd
 merge_package main https://github.com/Lienol/openwrt-package.git feeds/packages/net other/lean/vlmcsd
 ## 提取 luci-app-hd-idle
@@ -94,11 +90,6 @@ git clone https://github.com/destan19/OpenAppFilter.git package/chajian/OpenAppF
 
 # 拉取 luci-app-socat
 git clone https://github.com/chenmozhijin/luci-app-socat.git package/chajian/socat
-
-# 替换 tailscale 的默认启动脚本和配置
-sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
-# 拉取 luci-app-tailscale
-git clone https://github.com/asvow/luci-app-tailscale.git package/chajian/tailscale/luci-app-tailscale
 
 # 修改默认 IP
 #sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generate
