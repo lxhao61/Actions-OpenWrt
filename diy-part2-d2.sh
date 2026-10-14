@@ -49,7 +49,7 @@ merge_package 25.12 https://github.com/Lienol/openwrt-packages.git package/feeds
 ## 提取 pdnsd-alt、upx
 merge_package main https://github.com/kenzok8/jell.git package/chajian/kenzok8-package pdnsd-alt upx
 ## 提取 tailscale（兼容如下 golang 27.x）
-merge_package openwrt-24.10 https://github.com/openwrt/packages.git feeds/packages/net net/tailscale
+merge_package openwrt-25.12 https://github.com/openwrt/packages.git feeds/packages/net net/tailscale
 ## 提取 luci-app-firewall（如上 fullconenat-nft 需要）
 merge_package openwrt-25.12 https://github.com/immortalwrt/luci.git feeds/luci/applications applications/luci-app-firewall
 ## 提取 luci-base（如上 fullconenat-nft 需要）
@@ -96,10 +96,11 @@ rm -rf package/feeds/lienol/luci-app-socat
 # 拉取新的 luci-app-socat
 git clone https://github.com/chenmozhijin/luci-app-socat.git package/chajian/socat
 
-# 替换 tailscale 的默认启动脚本和配置
-sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
-# 拉取 luci-app-tailscale
-git clone https://github.com/asvow/luci-app-tailscale.git package/chajian/tailscale/luci-app-tailscale
+# 删除自带的 luci-app-tailscale-community
+rm -rf feeds/luci/applications/luci-app-tailscale-community
+rm -rf package/feeds/luci/luci-app-tailscale-community
+# 拉取新的 luci-app-tailscale-community
+git clone https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community.git package/chajian/tailscale
 
 # 删除 feeds.conf.default 中添加的第三方源
 sed -i '/lienol/d' feeds.conf.default
