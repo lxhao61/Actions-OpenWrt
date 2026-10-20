@@ -11,6 +11,10 @@
 #
 
 # 特殊的替换配置
+## 删除自带的 golang
+rm -rf feeds/packages/lang/golang
+## 删除自带的 lua
+rm -rf feeds/packages/lang/lua
 ## 删除自带的 vlmcsd
 rm -rf feeds/packages/net/vlmcsd
 ## 删除自带的 luci-app-hd-idle
@@ -42,6 +46,10 @@ function merge_package(){
 merge_package openwrt-25.12 https://github.com/immortalwrt/immortalwrt.git package/emortal package/emortal/cpufreq
 ## 提取 fullconenat-nft
 merge_package openwrt-25.12 https://github.com/immortalwrt/immortalwrt.git package/network/utils package/network/utils/fullconenat-nft
+## 提取 golang（如下 xray-core 要求 golang 27.x）
+merge_package master https://github.com/openwrt/packages.git feeds/packages/lang lang/golang
+## 提取 lua（解决 prosody 依赖报错问题）
+merge_package master https://github.com/openwrt/packages.git feeds/packages/lang lang/lua
 ## 提取 px5g-openssl
 merge_package openwrt-25.12 https://github.com/immortalwrt/immortalwrt.git package/utils package/utils/px5g-openssl
 ## 提取 vlmcsd
@@ -52,11 +60,6 @@ merge_package openwrt-25.12 https://github.com/openwrt/luci.git feeds/luci/appli
 merge_package main https://github.com/Lienol/openwrt-package.git feeds/luci/applications luci-app-softethervpn
 ## 提取 luci-app-vlmcsd
 merge_package main https://github.com/Lienol/openwrt-package.git feeds/luci/applications other/lean/luci-app-vlmcsd
-
-# 删除自带的 golang
-rm -rf feeds/packages/lang/golang
-# 拉取新的 golang（如下 xray-core 等需要）
-git clone https://github.com/sbwml/packages_lang_golang.git -b 27.x feeds/packages/lang/golang
 
 # 删除自带的 passwall 核心库
 rm -rf feeds/packages/net/{xray-core,v2ray-geodata,sing-box,chinadns-ng,dns2socks,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-rust,shadowsocksr-libev,simple-obfs,tcping,v2ray-plugin,xray-plugin,geoview,shadow-tls}
