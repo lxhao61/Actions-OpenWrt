@@ -41,7 +41,7 @@ merge_package 24.10 https://github.com/Lienol/openwrt-packages.git package/feeds
 ## 提取 pdnsd-alt、upx
 merge_package main https://github.com/kenzok8/jell.git package/chajian/kenzok8-package pdnsd-alt upx
 ## 提取 rpcd-mod-rad3-enc（没同步的 luci-app-radicale3 依赖）
-merge_package master https://github.com/openwrt/luci.git package/feeds/luci libs/rpcd-mod-rad3-enc
+merge_package openwrt-24.10 https://github.com/openwrt/luci.git package/feeds/luci libs/rpcd-mod-rad3-enc
 ## 提取 luci-app-firewall（如上 fullconenat-nft 需要）
 merge_package openwrt-24.10 https://github.com/immortalwrt/luci.git feeds/luci/applications applications/luci-app-firewall
 ## 提取 luci-base（如上 fullconenat-nft 需要）
@@ -86,17 +86,11 @@ rm -rf package/feeds/lienol/luci-app-socat
 # 拉取新的 luci-app-socat
 git clone https://github.com/chenmozhijin/luci-app-socat.git package/chajian/socat
 
-# 替换 tailscale 的默认启动脚本和配置
-sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
-# 拉取 luci-app-tailscale
-git clone https://github.com/asvow/luci-app-tailscale.git package/chajian/tailscale/luci-app-tailscale
+# 拉取 luci-app-tailscale-community
+git clone https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community.git package/chajian/tailscale
 
 # 删除 feeds.conf.default 中添加的第三方源
 sed -i '/lienol/d' feeds.conf.default
-
-# 删除第三方源自带的 luci-app-mtwifi
-rm -rf feeds/lienol/other/lean/mt
-rm -rf package/feeds/lienol/luci-app-mtwifi
 
 # 修改默认 IP
 #sed -i 's/192.168.1.1/192.168.5.5/g' package/base-files/files/bin/config_generate
