@@ -10,6 +10,47 @@
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
 
+# 删除自带的 golang
+rm -rf feeds/packages/lang/golang
+# 拉取新的 golang（如下 xray-core 等需要）
+git clone https://github.com/sbwml/packages_lang_golang.git -b 27.x feeds/packages/lang/golang
+
+# 删除自带的 passwall 核心库
+rm -rf feeds/packages/net/{xray-core,v2ray-geodata,sing-box,chinadns-ng,dns2socks,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-rust,shadowsocksr-libev,simple-obfs,tcping,v2ray-plugin,xray-plugin,geoview,shadow-tls,smartdns}
+rm -rf package/feeds/packages/{xray-core,v2ray-geodata,sing-box,chinadns-ng,dns2socks,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-rust,shadowsocksr-libev,simple-obfs,tcping,v2ray-plugin,xray-plugin,geoview,shadow-tls,smartdns}
+# 拉取新的 passwall 核心库
+git clone https://github.com/Openwrt-Passwall/openwrt-passwall-packages.git package/chajian/passwall-packages
+#cd package/chajian/passwall-packages
+#git checkout bc40fceb0488dfb5a4adb711cc1830a8021ee555
+#cd -
+
+# 删除自带的 luci-app-passwall
+rm -rf feeds/luci/applications/luci-app-passwall
+rm -rf package/feeds/luci/luci-app-passwall
+# 拉取新的 luci-app-passwall
+git clone https://github.com/Openwrt-Passwall/openwrt-passwall.git package/chajian/passwall-luci
+#cd package/chajian/passwall-luci
+#git checkout ebd3355bdf2fcaa9e0c43ec0704a8d9d8cf9f658
+#cd -
+
+# 拉取 easytier、luci-app-easytier
+git clone https://github.com/EasyTier/luci-app-easytier.git package/chajian/easytier
+
+# 拉取锐捷认证
+git clone https://github.com/sbwml/luci-app-mentohust.git package/chajian/mentohust
+
+# 删除自带的 open-app-filter
+rm -rf feeds/packages/net/open-app-filter
+rm -rf package/feeds/packages/open-app-filter
+# 拉取新的 OpenAppFilter、luci-app-oaf
+git clone https://github.com/destan19/OpenAppFilter.git package/chajian/OpenAppFilter
+
+# 拉取 luci-app-socat
+git clone https://github.com/chenmozhijin/luci-app-socat.git package/chajian/socat
+
+# 拉取 luci-app-tailscale-community
+git clone https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community.git package/chajian/tailscale
+
 # 特殊的替换配置
 ## 删除自带的 vlmcsd
 rm -rf feeds/packages/net/vlmcsd
@@ -43,7 +84,7 @@ merge_package openwrt-24.10 https://github.com/immortalwrt/immortalwrt.git packa
 ## 提取 fullconenat-nft
 merge_package openwrt-24.10 https://github.com/immortalwrt/immortalwrt.git package/network/utils package/network/utils/fullconenat-nft
 ## 提取 rpcd-mod-rad3-enc（没同步的 luci-app-radicale3 依赖）
-merge_package master https://github.com/openwrt/luci.git package/feeds/luci libs/rpcd-mod-rad3-enc
+merge_package openwrt-24.10 https://github.com/openwrt/luci.git package/feeds/luci libs/rpcd-mod-rad3-enc
 ## 提取 vlmcsd
 merge_package main https://github.com/Lienol/openwrt-package.git feeds/packages/net other/lean/vlmcsd
 ## 提取 luci-app-hd-idle
@@ -52,47 +93,6 @@ merge_package openwrt-24.10 https://github.com/openwrt/luci.git feeds/luci/appli
 merge_package main https://github.com/Lienol/openwrt-package.git feeds/luci/applications luci-app-softethervpn
 ## 提取 luci-app-vlmcsd
 merge_package main https://github.com/Lienol/openwrt-package.git feeds/luci/applications other/lean/luci-app-vlmcsd
-
-# 删除自带的 golang
-rm -rf feeds/packages/lang/golang
-# 拉取新的 golang（如下 xray-core 等需要）
-git clone https://github.com/sbwml/packages_lang_golang.git -b 27.x feeds/packages/lang/golang
-
-# 删除自带的 passwall 核心库
-rm -rf feeds/packages/net/{xray-core,v2ray-geodata,sing-box,chinadns-ng,dns2socks,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-rust,shadowsocksr-libev,simple-obfs,tcping,v2ray-plugin,xray-plugin,geoview,shadow-tls}
-rm -rf package/feeds/packages/{xray-core,v2ray-geodata,sing-box,chinadns-ng,dns2socks,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-rust,shadowsocksr-libev,simple-obfs,tcping,v2ray-plugin,xray-plugin,geoview,shadow-tls}
-# 拉取新的 passwall 核心库
-git clone https://github.com/Openwrt-Passwall/openwrt-passwall-packages.git package/chajian/passwall-packages
-#cd package/chajian/passwall-packages
-#git checkout bc40fceb0488dfb5a4adb711cc1830a8021ee555
-#cd -
-
-# 删除自带的 luci-app-passwall
-rm -rf feeds/luci/applications/luci-app-passwall
-rm -rf package/feeds/luci/luci-app-passwall
-# 拉取新的 luci-app-passwall
-git clone https://github.com/Openwrt-Passwall/openwrt-passwall.git package/chajian/passwall-luci
-#cd package/chajian/passwall-luci
-#git checkout ebd3355bdf2fcaa9e0c43ec0704a8d9d8cf9f658
-#cd -
-
-# 拉取 easytier、luci-app-easytier
-git clone https://github.com/EasyTier/luci-app-easytier.git package/chajian/easytier
-
-# 拉取锐捷认证
-git clone https://github.com/sbwml/luci-app-mentohust.git package/chajian/mentohust
-
-# 删除自带的 open-app-filter
-rm -rf feeds/packages/net/open-app-filter
-rm -rf package/feeds/packages/open-app-filter
-# 拉取新的 OpenAppFilter、luci-app-oaf
-git clone https://github.com/destan19/OpenAppFilter.git package/chajian/OpenAppFilter
-
-# 拉取 luci-app-socat
-git clone https://github.com/chenmozhijin/luci-app-socat.git package/chajian/socat
-
-# 拉取 luci-app-tailscale-community
-git clone https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community.git package/chajian/tailscale
 
 # 修改默认 IP
 #sed -i 's/192.168.1.1/192.168.5.1/g' package/base-files/files/bin/config_generate
