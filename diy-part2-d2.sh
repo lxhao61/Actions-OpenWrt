@@ -10,6 +10,48 @@
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
 
+# 删除自带的 golang
+rm -rf feeds/packages/lang/golang
+# 拉取新的 golang（如下 xray-core 等需要）
+git clone https://github.com/sbwml/packages_lang_golang.git -b 27.x feeds/packages/lang/golang
+
+# 删除自带的 passwall 核心库
+rm -rf feeds/packages/net/{xray-core,v2ray-geodata,sing-box,chinadns-ng,dns2socks,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-rust,shadowsocksr-libev,simple-obfs,tcping,v2ray-plugin,xray-plugin,geoview,shadow-tls,smartdns}
+rm -rf package/feeds/packages/{xray-core,v2ray-geodata,sing-box,chinadns-ng,dns2socks,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-rust,shadowsocksr-libev,simple-obfs,tcping,v2ray-plugin,xray-plugin,geoview,shadow-tls,smartdns}
+# 拉取新的 passwall 核心库
+git clone https://github.com/Openwrt-Passwall/openwrt-passwall-packages.git package/chajian/passwall-packages
+#cd package/chajian/passwall-packages
+#git checkout bc40fceb0488dfb5a4adb711cc1830a8021ee555
+#cd -
+
+# 拉取 luci-app-passwall
+git clone https://github.com/Openwrt-Passwall/openwrt-passwall.git package/chajian/passwall-luci
+#cd package/chajian/passwall-luci
+#git checkout ebd3355bdf2fcaa9e0c43ec0704a8d9d8cf9f658
+#cd -
+
+# 拉取 easytier、luci-app-easytier
+git clone https://github.com/EasyTier/luci-app-easytier.git package/chajian/easytier
+
+# 拉取锐捷认证
+git clone https://github.com/sbwml/luci-app-mentohust.git package/chajian/mentohust
+
+# 拉取 msd_lite、luci-app-msd_lite
+git clone https://github.com/maxmib/luci-app-msd-lite.git package/chajian/msd_lite
+#git clone https://github.com/gtolog/openwrt-msd_lite.git package/chajian/msd_lite
+
+# 拉取 OpenAppFilter、luci-app-oaf
+git clone https://github.com/destan19/OpenAppFilter.git package/chajian/OpenAppFilter
+
+## 删除自带的 luci-app-socat
+rm -rf feeds/lienol/luci-app-socat
+rm -rf package/feeds/lienol/luci-app-socat
+# 拉取新的 luci-app-socat
+git clone https://github.com/chenmozhijin/luci-app-socat.git package/chajian/socat
+
+# 拉取 luci-app-tailscale-community
+git clone https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community.git package/chajian/tailscale
+
 # 特殊的替换配置
 ## 删除自带的 luci-app-firewall
 rm -rf feeds/luci/applications/luci-app-firewall
@@ -46,48 +88,6 @@ merge_package openwrt-24.10 https://github.com/openwrt/luci.git package/feeds/lu
 merge_package openwrt-24.10 https://github.com/immortalwrt/luci.git feeds/luci/applications applications/luci-app-firewall
 ## 提取 luci-base（如上 fullconenat-nft 需要）
 merge_package openwrt-24.10 https://github.com/immortalwrt/luci.git feeds/luci/modules modules/luci-base
-
-# 删除自带的 golang
-rm -rf feeds/packages/lang/golang
-# 拉取新的 golang（如下 xray-core 等需要）
-git clone https://github.com/sbwml/packages_lang_golang.git -b 27.x feeds/packages/lang/golang
-
-# 删除自带的 passwall 核心库
-rm -rf feeds/packages/net/{xray-core,v2ray-geodata,sing-box,chinadns-ng,dns2socks,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-rust,shadowsocksr-libev,simple-obfs,tcping,v2ray-plugin,xray-plugin,geoview,shadow-tls}
-rm -rf package/feeds/packages/{xray-core,v2ray-geodata,sing-box,chinadns-ng,dns2socks,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-rust,shadowsocksr-libev,simple-obfs,tcping,v2ray-plugin,xray-plugin,geoview,shadow-tls}
-# 拉取新的 passwall 核心库
-git clone https://github.com/Openwrt-Passwall/openwrt-passwall-packages.git package/chajian/passwall-packages
-#cd package/chajian/passwall-packages
-#git checkout bc40fceb0488dfb5a4adb711cc1830a8021ee555
-#cd -
-
-# 拉取 luci-app-passwall
-git clone https://github.com/Openwrt-Passwall/openwrt-passwall.git package/chajian/passwall-luci
-#cd package/chajian/passwall-luci
-#git checkout ebd3355bdf2fcaa9e0c43ec0704a8d9d8cf9f658
-#cd -
-
-# 拉取 easytier、luci-app-easytier
-git clone https://github.com/EasyTier/luci-app-easytier.git package/chajian/easytier
-
-# 拉取锐捷认证
-git clone https://github.com/sbwml/luci-app-mentohust.git package/chajian/mentohust
-
-# 拉取 msd_lite、luci-app-msd_lite
-git clone https://github.com/maxmib/luci-app-msd-lite.git package/chajian/msd_lite
-#git clone https://github.com/gtolog/openwrt-msd_lite.git package/chajian/msd_lite
-
-# 拉取 OpenAppFilter、luci-app-oaf
-git clone https://github.com/destan19/OpenAppFilter.git package/chajian/OpenAppFilter
-
-## 删除自带的 luci-app-socat
-rm -rf feeds/lienol/luci-app-socat
-rm -rf package/feeds/lienol/luci-app-socat
-# 拉取新的 luci-app-socat
-git clone https://github.com/chenmozhijin/luci-app-socat.git package/chajian/socat
-
-# 拉取 luci-app-tailscale-community
-git clone https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community.git package/chajian/tailscale
 
 # 删除 feeds.conf.default 中添加的第三方源
 sed -i '/lienol/d' feeds.conf.default
