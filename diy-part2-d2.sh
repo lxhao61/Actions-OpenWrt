@@ -10,57 +10,14 @@
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
 
-# 特殊的替换配置
-## 删除自带的 vlmcsd
-rm -rf feeds/packages/net/vlmcsd
-## 删除自带的 luci-app-hd-idle
-rm -rf feeds/luci/applications/luci-app-hd-idle
-## 删除自带的 luci-app-softethervpn
-rm -rf feeds/luci/applications/luci-app-softethervpn
-## 删除自带的 luci-app-vlmcsd
-rm -rf feeds/luci/applications/luci-app-vlmcsd
-## 筛选程序
-function merge_package(){
-    # 参数1是分支名,参数2是库地址。所有文件下载到指定路径。
-    # 同一个仓库下载多个文件夹直接在后面跟文件名或路径，空格分开。
-    trap 'rm -rf "$tmpdir"' EXIT
-    branch="$1" curl="$2" target_dir="$3" && shift 3
-    rootdir="$PWD"
-    localdir="$target_dir"
-    [ -d "$localdir" ] || mkdir -p "$localdir"
-    tmpdir="$(mktemp -d)" || exit 1
-    git clone -b "$branch" --depth 1 --filter=blob:none --sparse "$curl" "$tmpdir"
-    cd "$tmpdir"
-    git sparse-checkout init --cone
-    git sparse-checkout set "$@"
-    for folder in "$@"; do
-        mv -f "$folder" "$rootdir/$localdir"
-    done
-    cd "$rootdir"
-}
-## 提取 cpufreq
-merge_package openwrt-24.10 https://github.com/immortalwrt/immortalwrt.git package/emortal package/emortal/cpufreq
-## 提取 fullconenat-nft
-merge_package openwrt-24.10 https://github.com/immortalwrt/immortalwrt.git package/network/utils package/network/utils/fullconenat-nft
-## 提取 rpcd-mod-rad3-enc（没同步的 luci-app-radicale3 依赖）
-merge_package master https://github.com/openwrt/luci.git package/feeds/luci libs/rpcd-mod-rad3-enc
-## 提取 vlmcsd
-merge_package main https://github.com/Lienol/openwrt-package.git feeds/packages/net other/lean/vlmcsd
-## 提取 luci-app-hd-idle
-merge_package openwrt-24.10 https://github.com/openwrt/luci.git feeds/luci/applications applications/luci-app-hd-idle
-## 提取 luci-app-softethervpn
-merge_package main https://github.com/Lienol/openwrt-package.git feeds/luci/applications luci-app-softethervpn
-## 提取 luci-app-vlmcsd
-merge_package main https://github.com/Lienol/openwrt-package.git feeds/luci/applications other/lean/luci-app-vlmcsd
-
 # 删除自带的 golang
 rm -rf feeds/packages/lang/golang
 # 拉取新的 golang（如下 xray-core 等需要）
 git clone https://github.com/sbwml/packages_lang_golang.git -b 27.x feeds/packages/lang/golang
 
 # 删除自带的 passwall 核心库
-rm -rf feeds/packages/net/{xray-core,v2ray-geodata,sing-box,chinadns-ng,dns2socks,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-rust,shadowsocksr-libev,simple-obfs,tcping,v2ray-plugin,xray-plugin,geoview,shadow-tls}
-rm -rf package/feeds/packages/{xray-core,v2ray-geodata,sing-box,chinadns-ng,dns2socks,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-rust,shadowsocksr-libev,simple-obfs,tcping,v2ray-plugin,xray-plugin,geoview,shadow-tls}
+rm -rf feeds/packages/net/{xray-core,v2ray-geodata,sing-box,chinadns-ng,dns2socks,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-rust,shadowsocksr-libev,simple-obfs,tcping,v2ray-plugin,xray-plugin,geoview,shadow-tls,smartdns}
+rm -rf package/feeds/packages/{xray-core,v2ray-geodata,sing-box,chinadns-ng,dns2socks,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-rust,shadowsocksr-libev,simple-obfs,tcping,v2ray-plugin,xray-plugin,geoview,shadow-tls,smartdns}
 # 拉取新的 passwall 核心库
 git clone https://github.com/Openwrt-Passwall/openwrt-passwall-packages.git package/chajian/passwall-packages
 #cd package/chajian/passwall-packages
@@ -93,6 +50,47 @@ git clone https://github.com/chenmozhijin/luci-app-socat.git package/chajian/soc
 
 # 拉取 luci-app-tailscale-community
 git clone https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community.git package/chajian/tailscale
+
+# 特殊的替换配置
+## 删除自带的 vlmcsd
+rm -rf feeds/packages/net/vlmcsd
+## 删除自带的 luci-app-hd-idle
+rm -rf feeds/luci/applications/luci-app-hd-idle
+## 删除自带的 luci-app-softethervpn
+rm -rf feeds/luci/applications/luci-app-softethervpn
+## 删除自带的 luci-app-vlmcsd
+rm -rf feeds/luci/applications/luci-app-vlmcsd
+## 筛选程序
+function merge_package(){
+    # 参数1是分支名,参数2是库地址。所有文件下载到指定路径。
+    # 同一个仓库下载多个文件夹直接在后面跟文件名或路径，空格分开。
+    trap 'rm -rf "$tmpdir"' EXIT
+    branch="$1" curl="$2" target_dir="$3" && shift 3
+    rootdir="$PWD"
+    localdir="$target_dir"
+    [ -d "$localdir" ] || mkdir -p "$localdir"
+    tmpdir="$(mktemp -d)" || exit 1
+    git clone -b "$branch" --depth 1 --filter=blob:none --sparse "$curl" "$tmpdir"
+    cd "$tmpdir"
+    git sparse-checkout init --cone
+    git sparse-checkout set "$@"
+    for folder in "$@"; do
+        mv -f "$folder" "$rootdir/$localdir"
+    done
+    cd "$rootdir"
+}
+## 提取 cpufreq
+merge_package openwrt-24.10 https://github.com/immortalwrt/immortalwrt.git package/emortal package/emortal/cpufreq
+## 提取 fullconenat-nft
+merge_package openwrt-24.10 https://github.com/immortalwrt/immortalwrt.git package/network/utils package/network/utils/fullconenat-nft
+## 提取 vlmcsd
+merge_package main https://github.com/Lienol/openwrt-package.git feeds/packages/net other/lean/vlmcsd
+## 提取 luci-app-hd-idle
+merge_package openwrt-24.10 https://github.com/openwrt/luci.git feeds/luci/applications applications/luci-app-hd-idle
+## 提取 luci-app-softethervpn
+merge_package main https://github.com/Lienol/openwrt-package.git feeds/luci/applications luci-app-softethervpn
+## 提取 luci-app-vlmcsd
+merge_package main https://github.com/Lienol/openwrt-package.git feeds/luci/applications other/lean/luci-app-vlmcsd
 
 # 修改默认 IP
 #sed -i 's/192.168.1.1/192.168.5.1/g' package/base-files/files/bin/config_generate
