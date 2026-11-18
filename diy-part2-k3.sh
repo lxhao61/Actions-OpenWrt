@@ -28,6 +28,9 @@ git clone https://github.com/Openwrt-Passwall/openwrt-passwall.git package/chaji
 #git checkout ebd3355bdf2fcaa9e0c43ec0704a8d9d8cf9f658
 #cd -
 
+# 拉取 luci-app-dnet
+git clone https://github.com/KingNuoNuo/luci-app-dnet.git package/chajian/dnet/luci-app-dnet
+
 # 拉取 easytier、luci-app-easytier
 git clone https://github.com/EasyTier/luci-app-easytier.git package/chajian/easytier
 
